@@ -5,7 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-const heroImage = PlaceHolderImages.find(img => img.id === 'hero-transport-van');
+const heroImage = {
+  id: "hero-transport-van",
+  description: "A fleet of modern ambulance vans ready for service.",
+  imageUrl: "https://picsum.photos/seed/van/2070/1380",
+  imageHint: "ambulance van"
+};
+
 
 const featureCards = [
   {

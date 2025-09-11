@@ -2,12 +2,6 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-transport-van",
-      "description": "A fleet of modern ambulance vans ready for service.",
-      "imageUrl": "https://picsum.photos/seed/van/2070/1380",
-      "imageHint": "ambulance van"
-    },
-    {
       "id": "about-us-team",
       "description": "A happy patient being assisted out of a wheelchair by a caring staff member.",
       "imageUrl": "https://picsum.photos/seed/patient/1200/800",
