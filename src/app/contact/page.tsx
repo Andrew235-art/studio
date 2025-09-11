@@ -77,10 +77,6 @@ export default function ContactPage() {
                 </Card>
             </div>
             <div className="lg:order-1">
-                <div className="mb-8">
-                    <h2 className="text-3xl font-headline font-bold text-foreground">Send Us a Message</h2>
-                    <p className="text-muted-foreground mt-2">We'll get back to you as soon as possible.</p>
-                </div>
                 <ContactForm />
             </div>
         </div>
