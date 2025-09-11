@@ -16,13 +16,11 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  const [isMounted, setIsMounted] = useState(false);
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
 
   useEffect(() => {
-    setIsMounted(true);
+    setCurrentYear(new Date().getFullYear());
   }, []);
-
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-white border-t">
@@ -79,7 +77,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-           {isMounted && <p>&copy; {currentYear} Stamerck. All rights reserved.</p>}
+           {currentYear && <p>&copy; {currentYear} Stamerck. All rights reserved.</p>}
         </div>
       </div>
     </footer>
