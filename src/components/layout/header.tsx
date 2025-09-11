@@ -17,14 +17,15 @@ import {
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { 
-    name: 'Services', 
+  {
+    name: 'Services',
     href: '/services',
     sublinks: [
       { name: 'Wheelchair Transport', href: '/services/wheelchair-transport'},
       { name: 'Stretcher Transport', href: '/services/stretcher-transport'},
       { name: 'Ambulatory Transport', href: '/services/ambulatory-transport'},
       { name: 'Long Distance Transport', href: '/services/long-distance-transport'},
+      { name: 'Non-Medical Occasions', href: '/services/non-medical-occasions'},
     ]
   },
   { name: 'About Us', href: '/about' },
@@ -54,18 +55,18 @@ export default function Header() {
             link.sublinks ? (
               <DropdownMenu key={link.href}>
                 <DropdownMenuTrigger asChild>
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      'flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary',
+                   <button className={cn(
+                      'flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus-visible:outline-none',
                       pathname.startsWith(link.href) ? 'text-primary' : 'text-muted-foreground'
-                    )}
-                  >
-                    {link.name}
-                    <ChevronDown className="h-4 w-4" />
-                  </Link>
+                    )}>
+                      {link.name}
+                      <ChevronDown className="h-4 w-4" />
+                   </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
+                   <DropdownMenuItem asChild>
+                      <Link href={link.href}>All Services</Link>
+                    </DropdownMenuItem>
                   {link.sublinks.map((sublink) => (
                     <DropdownMenuItem key={sublink.href} asChild>
                       <Link href={sublink.href}>{sublink.name}</Link>
