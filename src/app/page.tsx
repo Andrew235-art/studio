@@ -1,9 +1,9 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Car, HeartHandshake, ShieldCheck, ArrowRight, UserCheck, CalendarCheck, Map, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BookingModal } from '@/components/booking-modal';
 
 const heroImage = {
   id: "hero-transport-van",
@@ -110,12 +110,12 @@ export default function Home() {
           <p className="text-lg md:text-2xl max-w-3xl mb-8 animate-fade-in-up">
             Your trusted partner for safe, reliable, and compassionate non-emergency medical transportation.
           </p>
-          <BookingModal>
+          <Link href="/booking">
             <Button size="lg" className="animate-fade-in-up">
               Book Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </BookingModal>
+          </Link>
         </div>
       </section>
 
@@ -247,9 +247,9 @@ export default function Home() {
             Our team is standing by to assist you. Book online in minutes or contact us for any inquiries. Let us provide the care you deserve.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <BookingModal>
+            <Link href="/booking">
                 <Button size="lg" variant="secondary">Book Now</Button>
-            </BookingModal>
+            </Link>
             <Link href="/contact">
               <Button size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
                 Contact Us

@@ -7,7 +7,6 @@ import { Ambulance, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { BookingModal } from '../booking-modal';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -50,9 +49,9 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-           <BookingModal>
+           <Link href="/booking">
              <Button className="hidden md:block">Book Now</Button>
-           </BookingModal>
+           </Link>
           <Button
             variant="ghost"
             size="icon"
@@ -80,9 +79,9 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-             <BookingModal>
+             <Link href="/booking" className="w-full">
                 <Button className="w-full" onClick={() => setIsMenuOpen(false)}>Book Now</Button>
-             </BookingModal>
+             </Link>
           </nav>
         </div>
       )}

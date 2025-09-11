@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -29,6 +30,7 @@ import { Separator } from '@/components/ui/separator';
 import { DatePicker } from './date-picker';
 import { TimePicker } from './time-picker';
 import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 
 const TransportationDetailSchema = z.object({
@@ -70,13 +72,14 @@ type FormData = z.infer<typeof formSchema>;
 const FormSectionTitle = ({ children }: { children: React.ReactNode }) => (
     <div className="relative my-6">
         <Separator className="absolute inset-y-1/2" />
-        <h2 className="relative text-center bg-card px-4 text-lg font-semibold text-foreground w-fit mx-auto">{children}</h2>
+        <h2 className="relative text-center bg-white px-4 text-lg font-semibold text-foreground w-fit mx-auto">{children}</h2>
     </div>
 );
 
-export default function BookingForm({onSuccess}: {onSuccess?: () => void}) {
+export default function BookingForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -114,9 +117,7 @@ export default function BookingForm({onSuccess}: {onSuccess?: () => void}) {
     });
     
     form.reset();
-    if(onSuccess) {
-      onSuccess();
-    }
+    router.push('/');
   }
 
   return (
