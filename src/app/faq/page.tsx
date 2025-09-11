@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "How do I book a ride?",
     answer:
-      "You can book a ride by filling out our online booking form on the 'Booking' page, or by calling us directly at 1-800-123-4567. We recommend booking at least 24-48 hours in advance.",
+      "You can book a ride by filling out our online booking form on the 'Booking' page, or by calling us directly at +1 617 991 0839. We recommend booking at least 24-48 hours in advance.",
   },
   {
     question: "What areas do you service?",

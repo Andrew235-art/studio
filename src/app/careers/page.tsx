@@ -78,7 +78,7 @@ export default function CareersPage() {
 
                 <div className="text-center">
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                        Don't see a position that fits your profile? Send your resume to <a href="mailto:careers@stamerck.com" className="text-primary hover:underline">careers@stamerck.com</a> and we'll keep it on file for future openings.
+                        Don't see a position that fits your profile? Send your resume to <a href="mailto:bookings@stamerk.com" className="text-primary hover:underline">bookings@stamerk.com</a> and we'll keep it on file for future openings.
                     </p>
                 </div>
             </div>

@@ -26,7 +26,7 @@ export default function ContactPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">For bookings and inquiries:</p>
-              <a href="tel:1-800-123-4567" className="text-lg font-semibold text-primary hover:underline">1-800-123-4567</a>
+              <a href="tel:+1-617-991-0839" className="text-lg font-semibold text-primary hover:underline">+1 617 991 0839</a>
             </CardContent>
           </Card>
            <Card className="shadow-lg hover:shadow-xl transition-shadow">
@@ -36,7 +36,7 @@ export default function ContactPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">For general questions:</p>
-              <a href="mailto:contact@stamerck.com" className="text-lg font-semibold text-primary hover:underline">contact@stamerck.com</a>
+              <a href="mailto:bookings@stamerk.com" className="text-lg font-semibold text-primary hover:underline">bookings@stamerk.com</a>
             </CardContent>
           </Card>
            <Card className="shadow-lg hover:shadow-xl transition-shadow">
@@ -61,8 +61,7 @@ export default function ContactPage() {
             <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="md:col-span-1">
                     <h3 className="font-semibold text-lg mb-2">Stamerck Transport HQ</h3>
-                    <p className="text-muted-foreground">123 Health St,</p>
-                    <p className="text-muted-foreground">Medtown, USA 12345</p>
+                    <p className="text-muted-foreground">527 Ellison Ct Frederick, Md</p>
                 </div>
                 <div className="md:col-span-2 relative min-h-[300px] rounded-lg overflow-hidden">
                     {mapImage &&

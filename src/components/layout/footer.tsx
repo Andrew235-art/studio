@@ -42,15 +42,15 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
-                <a href="tel:1-800-123-4567" className="text-muted-foreground hover:text-primary">1-800-123-4567</a>
+                <a href="tel:+1-617-991-0839" className="text-muted-foreground hover:text-primary">+1 617 991 0839</a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
-                <a href="mailto:contact@stamerck.com" className="text-muted-foreground hover:text-primary">contact@stamerck.com</a>
+                <a href="mailto:bookings@stamerk.com" className="text-muted-foreground hover:text-primary">bookings@stamerk.com</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
-                <p className="text-muted-foreground">123 Health St, Medtown, USA</p>
+                <p className="text-muted-foreground">527 Ellison Ct Frederick, Md</p>
               </li>
             </ul>
           </div>
