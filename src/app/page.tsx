@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Car, HeartHandshake, ShieldCheck, ArrowRight, UserCheck, CalendarCheck, Map } from 'lucide-react';
+import { Car, HeartHandshake, ShieldCheck, ArrowRight, UserCheck, CalendarCheck, Map, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -50,7 +50,21 @@ const howItWorks = [
     title: '3. Ride with Confidence',
     description: 'Your driver arrives on time to provide safe, door-to-door service, getting you to your destination comfortably.'
   }
-]
+];
+
+const specializations = [
+  'Case Management Services',
+  'Insurance Claims Services',
+  'Workers Compensation Claims',
+  'Medical Logistical Coordination',
+  'Risk Management Firms',
+  'Law Firm Clients',
+  'Physical Therapy Centers',
+  'Dialysis Patients',
+  'Senior Care Facilities',
+  'Hospitals',
+  'Senior Citizens and Families',
+];
 
 export default function Home() {
   return (
@@ -152,6 +166,28 @@ export default function Home() {
           <Link href="/services">
             <Button variant="outline" size="lg">Explore All Services</Button>
           </Link>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
+              We Specialize in Transportation For:
+            </h2>
+          </div>
+          <Card className="max-w-4xl mx-auto shadow-lg">
+            <CardContent className="p-8 md:p-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                {specializations.map((item, index) => (
+                  <div key={index} className="flex items-center">
+                    <CheckCircle2 className="h-6 w-6 text-primary mr-3 flex-shrink-0" />
+                    <p className="text-lg text-muted-foreground">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
