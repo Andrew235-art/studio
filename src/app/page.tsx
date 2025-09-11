@@ -96,10 +96,10 @@ export default function Home() {
         
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
-          <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4 animate-fade-in-down">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold mb-4 animate-fade-in-down">
             Beyond Transportation, We Deliver Care
           </h1>
-          <p className="text-lg md:text-2xl max-w-3xl mb-8 animate-fade-in-up">
+          <p className="text-lg md:text-xl max-w-3xl mb-8 animate-fade-in-up">
             Your trusted partner for safe, reliable, and compassionate non-emergency medical transportation.
           </p>
           <Link href="/booking">
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
@@ -137,7 +137,7 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="py-16 md:py-24 bg-white">
+       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground mb-4">
             How It Works
@@ -158,7 +158,7 @@ export default function Home() {
       </section>
 
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground mb-4">
             Our Diverse Transportation Services
@@ -183,7 +183,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
@@ -205,7 +205,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
@@ -230,7 +230,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-primary text-primary-foreground py-16 md:py-24">
+      <section className="bg-primary text-primary-foreground py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">
             Ready to Schedule Your Ride?
@@ -252,5 +252,6 @@ export default function Home() {
       </section>
     </div>
   );
+}
 
     
