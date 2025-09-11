@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Stethoscope, Phone, Mail, MapPin } from 'lucide-react';
+import { Ambulance, Phone, Mail, MapPin } from 'lucide-react';
 
 const footerLinks = [
   { name: 'Home', href: '/' },
@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Stethoscope className="h-8 w-8 text-primary" />
+              <Ambulance className="h-8 w-8 text-primary" />
               <span className="font-headline text-xl font-bold">Stamerck</span>
             </Link>
             <p className="text-muted-foreground text-sm">
