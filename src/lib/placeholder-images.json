@@ -1,3 +1,41 @@
+
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-transport-van",
+      "description": "A modern medical transport van parked in front of a building.",
+      "imageUrl": "https://picsum.photos/seed/1/1920/1080",
+      "imageHint": "medical van"
+    },
+    {
+      "id": "about-us-team",
+      "description": "A diverse team of friendly healthcare professionals.",
+      "imageUrl": "https://picsum.photos/seed/2/1200/800",
+      "imageHint": "medical team"
+    },
+    {
+      "id": "team-member-1",
+      "description": "Portrait of a friendly male driver.",
+      "imageUrl": "https://picsum.photos/seed/3/400/400",
+      "imageHint": "male portrait"
+    },
+    {
+      "id": "team-member-2",
+      "description": "Portrait of a smiling female coordinator.",
+      "imageUrl": "https://picsum.photos/seed/4/400/400",
+      "imageHint": "female portrait"
+    },
+    {
+      "id": "team-member-3",
+      "description": "Portrait of a professional-looking person.",
+      "imageUrl": "https://picsum.photos/seed/5/400/400",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "contact-map",
+      "description": "A placeholder map showing a city location.",
+      "imageUrl": "https://picsum.photos/seed/6/1200/500",
+      "imageHint": "city map"
+    }
+  ]
 }
