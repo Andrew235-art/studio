@@ -46,9 +46,9 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link href="/booking" className="hidden md:block">
-            <Button>Book Now</Button>
-          </Link>
+          <Button asChild className="hidden md:block">
+            <Link href="/booking">Book Now</Link>
+          </Button>
           <Button
             variant="ghost"
             size="icon"
@@ -76,9 +76,9 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-            <Link href="/booking" className="w-full">
-              <Button className="w-full" onClick={() => setIsMenuOpen(false)}>Book Now</Button>
-            </Link>
+            <Button asChild className="w-full">
+              <Link href="/booking" onClick={() => setIsMenuOpen(false)}>Book Now</Link>
+            </Button>
           </nav>
         </div>
       )}
