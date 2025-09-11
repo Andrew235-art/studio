@@ -3,9 +3,9 @@
   "placeholderImages": [
     {
       "id": "hero-transport-van",
-      "description": "A fleet of modern medical transport vans ready for service.",
-      "imageUrl": "https://storage.googleapis.com/studiop-private-files/user/vCgEZpP5y3f64Iu3IetGag5yqGv1/completions/240731-011854-850.png",
-      "imageHint": "ambulance fleet"
+      "description": "A modern medical transport van ready for service.",
+      "imageUrl": "https://images.unsplash.com/photo-1628771065518-5d3248215357?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "ambulance van"
     },
     {
       "id": "about-us-team",
