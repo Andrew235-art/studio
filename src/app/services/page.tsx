@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wheelchair, StretchVertical, Car, Users, Clock, HeartHandshake } from "lucide-react";
+import { Accessibility, StretchVertical, Car, Users, Clock, HeartHandshake } from "lucide-react";
 
 const services = [
   {
-    icon: <Wheelchair className="h-10 w-10 text-primary" />,
+    icon: <Accessibility className="h-10 w-10 text-primary" />,
     title: "Wheelchair Accessible Transport",
     description: "Our vehicles are fully equipped with hydraulic lifts and securement systems to provide safe and comfortable transportation for clients in wheelchairs.",
   },
