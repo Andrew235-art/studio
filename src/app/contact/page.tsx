@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import ContactForm from "@/components/contact-form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function ContactPage() {
   const mapSrc = "https://maps.google.com/maps?q=527%20Ellison%20Ct%20Frederick,%20Md&t=&z=15&ie=UTF8&iwloc=&output=embed";
@@ -51,7 +53,7 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div className="lg:order-2">
+            <div className="lg:order-2 space-y-8">
                  <Card className="shadow-lg overflow-hidden">
                     <CardHeader>
                          <CardTitle className="flex items-center gap-3 text-2xl">
@@ -72,6 +74,21 @@ export default function ContactPage() {
                             title="Stamerck Location"
                             src={mapSrc}
                           ></iframe>
+                        </div>
+                    </CardContent>
+                </Card>
+                 <Card className="shadow-lg">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-3 text-2xl">
+                           <Send className="h-7 w-7 text-primary" />
+                           Subscribe to Our Newsletter
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground mb-4">Stay up-to-date with our latest news, services, and special offers.</p>
+                        <div className="flex w-full items-center space-x-2">
+                            <Input type="email" placeholder="Enter your email" />
+                            <Button type="submit">Subscribe</Button>
                         </div>
                     </CardContent>
                 </Card>
