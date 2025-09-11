@@ -66,6 +66,22 @@ const specializations = [
   'Senior Citizens and Families',
 ];
 
+const occasions = [
+  'Doctor Appointments',
+  'Physical Therapy',
+  'Dialysis Treatment',
+  'Outpatient Surgery',
+  'Treatment Centers',
+  'Social Outings',
+  'Airports',
+  'Prescription Drug Pick Up',
+  'Dental Appointments',
+  'Optometrist Visits',
+  'Hospital Checkout',
+  'Emergency Room Pick Up',
+  'Long Distance Transportation',
+];
+
 export default function Home() {
   return (
     <div className="flex flex-col">
@@ -180,6 +196,31 @@ export default function Home() {
             <CardContent className="p-8 md:p-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                 {specializations.map((item, index) => (
+                  <div key={index} className="flex items-center">
+                    <CheckCircle2 className="h-6 w-6 text-primary mr-3 flex-shrink-0" />
+                    <p className="text-lg text-muted-foreground">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
+              Transportation for All Occasions
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
+              From critical medical appointments to social outings, we provide reliable transport for a variety of non-medical needs.
+            </p>
+          </div>
+          <Card className="max-w-4xl mx-auto shadow-lg">
+            <CardContent className="p-8 md:p-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4">
+                {occasions.map((item, index) => (
                   <div key={index} className="flex items-center">
                     <CheckCircle2 className="h-6 w-6 text-primary mr-3 flex-shrink-0" />
                     <p className="text-lg text-muted-foreground">{item}</p>
