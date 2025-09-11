@@ -48,8 +48,8 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
            <Link href="/booking" passHref>
-              <Button asChild className="hidden md:block">
-                <a>Book Now</a>
+              <Button className="hidden md:block">
+                Book Now
               </Button>
             </Link>
           <Button
@@ -80,9 +80,7 @@ export default function Header() {
               </Link>
             ))}
              <Link href="/booking" passHref className="w-full">
-                <Button asChild className="w-full">
-                  <a onClick={() => setIsMenuOpen(false)}>Book Now</a>
-                </Button>
+                <Button className="w-full" onClick={() => setIsMenuOpen(false)}>Book Now</Button>
               </Link>
           </nav>
         </div>
