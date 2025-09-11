@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import { useState } from 'react';
@@ -47,11 +45,9 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-           <Link href="/booking" passHref>
-              <Button className="hidden md:block">
-                Book Now
-              </Button>
-            </Link>
+           <Button asChild className="hidden md:block">
+             <Link href="/booking">Book Now</Link>
+            </Button>
           <Button
             variant="ghost"
             size="icon"
@@ -79,9 +75,9 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-             <Link href="/booking" passHref className="w-full">
-                <Button className="w-full" onClick={() => setIsMenuOpen(false)}>Book Now</Button>
-              </Link>
+             <Button asChild className="w-full" onClick={() => setIsMenuOpen(false)}>
+                <Link href="/booking">Book Now</Link>
+              </Button>
           </nav>
         </div>
       )}
