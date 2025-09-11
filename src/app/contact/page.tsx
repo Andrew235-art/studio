@@ -37,7 +37,7 @@ export default function ContactPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">For general questions:</p>
-              <a href="mailto:bookings@stamerk.com" className="text-lg font-semibold text-primary hover:underline">bookings@stamerk.com</a>
+              <a href="mailto:bookings@stamerck.com" className="text-lg font-semibold text-primary hover:underline">bookings@stamerck.com</a>
             </CardContent>
           </Card>
            <Card className="shadow-lg hover:shadow-xl transition-shadow">

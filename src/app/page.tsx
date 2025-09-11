@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Car, HeartHandshake, ShieldCheck, ArrowRight, UserCheck, CalendarCheck, Map, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const heroImage = {
   id: "hero-transport-van",
