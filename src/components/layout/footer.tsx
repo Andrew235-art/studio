@@ -25,8 +25,8 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
-          <div className="flex flex-col items-center sm:items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-2">
               <Ambulance className="h-8 w-8 text-primary" />
               <div>
@@ -50,9 +50,9 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div className="flex flex-col items-center sm:items-start">
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-semibold mb-4 w-full">Contact Us</h3>
-            <ul className="space-y-3 text-sm flex flex-col items-center sm:items-start">
+            <ul className="space-y-3 text-sm flex flex-col items-center md:items-start">
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
                 <a href="tel:+1-617-991-0839" className="text-muted-foreground hover:text-primary">+1 617 991 0839</a>
@@ -83,3 +83,4 @@ export default function Footer() {
     </footer>
   );
 }
+
