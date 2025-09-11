@@ -5,7 +5,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: 'Stamerck Transport',
+  title: 'Stamerck',
   description: 'Reliable & Compassionate Non-Emergency Medical Transportation.',
 };
 

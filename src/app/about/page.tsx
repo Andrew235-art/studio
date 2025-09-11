@@ -20,7 +20,7 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-headline font-bold text-foreground">
-            About Stamerck Transport
+            About Stamerck
           </h1>
           <p className="text-muted-foreground mt-4 max-w-3xl mx-auto text-lg">
             Connecting our community to healthcare with compassion, one ride at a time.

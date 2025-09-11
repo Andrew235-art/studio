@@ -60,7 +60,7 @@ export default function ContactPage() {
             </CardHeader>
             <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="md:col-span-1">
-                    <h3 className="font-semibold text-lg mb-2">Stamerck Transport HQ</h3>
+                    <h3 className="font-semibold text-lg mb-2">Stamerck HQ</h3>
                     <p className="text-muted-foreground">527 Ellison Ct Frederick, Md</p>
                 </div>
                 <div className="md:col-span-2 relative min-h-[300px] rounded-lg overflow-hidden">

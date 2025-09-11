@@ -37,7 +37,7 @@ export default function CareersPage() {
                         Join Our Team
                     </h1>
                     <p className="text-muted-foreground mt-4 max-w-3xl mx-auto text-lg">
-                        We're looking for compassionate and reliable individuals to join the Stamerck Transport family. Help us make a difference, one ride at a time.
+                        We're looking for compassionate and reliable individuals to join the Stamerck family. Help us make a difference, one ride at a time.
                     </p>
                 </div>
 

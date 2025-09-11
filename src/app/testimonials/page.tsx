@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Mary Johnson",
     role: "Client",
-    testimonial: "Stamerck Transport has been a lifesaver for my mother's appointments. They are always on time, professional, and so caring. I can't recommend them enough!",
+    testimonial: "Stamerck has been a lifesaver for my mother's appointments. They are always on time, professional, and so caring. I can't recommend them enough!",
     rating: 5,
     avatar: "https://i.pravatar.cc/150?img=1"
   },
