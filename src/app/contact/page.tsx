@@ -1,11 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-
-const mapImage = PlaceHolderImages.find(img => img.id === 'contact-map');
 
 export default function ContactPage() {
+  const mapSrc = "https://maps.google.com/maps?q=527%20Ellison%20Ct%20Frederick,%20Md&t=&z=15&ie=UTF8&iwloc=&output=embed";
+
   return (
     <div className="bg-white py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -63,16 +61,14 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-lg mb-2">Stamerck HQ</h3>
                     <p className="text-muted-foreground">527 Ellison Ct Frederick, Md</p>
                 </div>
-                <div className="md:col-span-2 relative min-h-[300px] rounded-lg overflow-hidden">
-                    {mapImage &&
-                        <Image
-                            src={mapImage.imageUrl}
-                            alt={mapImage.description}
-                            fill
-                            className="object-cover"
-                            data-ai-hint={mapImage.imageHint}
-                        />
-                    }
+                <div className="md:col-span-2 relative min-h-[300px] rounded-lg overflow-hidden border">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    className="absolute inset-0"
+                    title="Stamerck Location"
+                    src={mapSrc}
+                  ></iframe>
                 </div>
             </CardContent>
         </Card>
