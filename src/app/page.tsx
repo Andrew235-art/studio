@@ -106,7 +106,7 @@ export default function Home() {
           </p>
           <Link href="/booking">
             <Button size="lg" className="animate-fade-in-up">
-              Schedule Your Transport
+              Book Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
