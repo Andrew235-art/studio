@@ -3,38 +3,38 @@
   "placeholderImages": [
     {
       "id": "hero-transport-van",
-      "description": "A modern medical transport van parked in front of a building.",
-      "imageUrl": "https://picsum.photos/seed/1/1920/1080",
-      "imageHint": "medical van"
+      "description": "A fleet of modern medical transport vans ready for service.",
+      "imageUrl": "https://picsum.photos/seed/fleet/1920/1080",
+      "imageHint": "ambulance fleet"
     },
     {
       "id": "about-us-team",
-      "description": "A diverse team of friendly healthcare professionals.",
-      "imageUrl": "https://picsum.photos/seed/2/1200/800",
-      "imageHint": "medical team"
+      "description": "A happy patient being assisted out of a wheelchair by a caring staff member.",
+      "imageUrl": "https://picsum.photos/seed/patient/1200/800",
+      "imageHint": "happy patient"
     },
     {
       "id": "team-member-1",
-      "description": "Portrait of a friendly male driver.",
-      "imageUrl": "https://picsum.photos/seed/3/400/400",
-      "imageHint": "male portrait"
+      "description": "Portrait of a friendly and professional male driver in uniform.",
+      "imageUrl": "https://picsum.photos/seed/driverone/400/400",
+      "imageHint": "male driver"
     },
     {
       "id": "team-member-2",
-      "description": "Portrait of a smiling female coordinator.",
-      "imageUrl": "https://picsum.photos/seed/4/400/400",
-      "imageHint": "female portrait"
+      "description": "Portrait of a smiling female coordinator with a headset.",
+      "imageUrl": "https://picsum.photos/seed/coordinator/400/400",
+      "imageHint": "female coordinator"
     },
     {
       "id": "team-member-3",
-      "description": "Portrait of a professional-looking person.",
-      "imageUrl": "https://picsum.photos/seed/5/400/400",
-      "imageHint": "professional portrait"
+      "description": "Portrait of a caring medical transportation professional.",
+      "imageUrl": "https://picsum.photos/seed/professional/400/400",
+      "imageHint": "medical professional"
     },
     {
       "id": "contact-map",
-      "description": "A placeholder map showing a city location.",
-      "imageUrl": "https://picsum.photos/seed/6/1200/500",
+      "description": "A clean, modern map showing a city location with a pin.",
+      "imageUrl": "https://picsum.photos/seed/map/1200/500",
       "imageHint": "city map"
     }
   ]
