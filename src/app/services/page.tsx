@@ -1,36 +1,43 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Accessibility, StretchVertical, Car, Users, Clock, HeartHandshake } from "lucide-react";
+import { Accessibility, StretchVertical, Car, Users, Clock, HeartHandshake, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
     icon: <Accessibility className="h-10 w-10 text-primary" />,
     title: "Wheelchair Accessible Transport",
-    description: "Our vehicles are fully equipped with hydraulic lifts and securement systems to provide safe and comfortable transportation for clients in wheelchairs.",
+    description: "Safe and comfortable transport for clients in wheelchairs, with hydraulic lifts and securement systems.",
+    href: "/services/wheelchair-transport",
   },
   {
     icon: <StretchVertical className="h-10 w-10 text-primary" />,
     title: "Stretcher/Gurney Transport",
-    description: "For clients who are unable to sit upright, we offer stretcher services with trained personnel to ensure a smooth and safe journey.",
+    description: "For clients who must remain in a supine position, ensuring a safe and smooth journey.",
+    href: "/services/stretcher-transport",
   },
   {
     icon: <Car className="h-10 w-10 text-primary" />,
     title: "Ambulatory Transport",
-    description: "For clients who can walk but may need some assistance, our ambulatory service provides door-to-door support for appointments and errands.",
+    description: "Door-to-door support for clients who can walk but may need some assistance.",
+    href: "/services/ambulatory-transport",
   },
   {
     icon: <Users className="h-10 w-10 text-primary" />,
     title: "Bariatric Transport",
-    description: "We have specialized vehicles and equipment to safely and comfortably accommodate bariatric clients with dignity and respect.",
+    description: "Specialized vehicles and equipment to safely and comfortably accommodate bariatric clients.",
+    href: "/services/wheelchair-transport", // Or a dedicated page if needed
   },
   {
     icon: <Clock className="h-10 w-10 text-primary" />,
     title: "Long-Distance Transport",
-    description: "We offer non-emergency medical transport for long-distance trips, ensuring comfort and care throughout the entire journey, state-to-state.",
+    description: "Comfortable and reliable transport for out-of-town and state-to-state medical needs.",
+    href: "/services/long-distance-transport",
   },
   {
     icon: <HeartHandshake className="h-10 w-10 text-primary" />,
     title: "Standby Services",
-    description: "Our team can remain on standby during appointments or procedures to provide immediate transportation once the client is ready to return.",
+    description: "Drivers can remain on standby during appointments for immediate return transport.",
+    href: "/contact",
   },
 ];
 
@@ -48,15 +55,22 @@ export default function ServicesPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardHeader className="flex flex-col items-center text-center">
-                {service.icon}
-                <CardTitle className="mt-4">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-grow text-center">
-                <p className="text-muted-foreground">{service.description}</p>
-              </CardContent>
-            </Card>
+            <Link href={service.href} key={index} className="flex">
+              <Card className="w-full flex flex-col shadow-lg hover:shadow-xl hover:border-primary/50 transition-all duration-300">
+                <CardHeader className="flex flex-col items-center text-center">
+                  {service.icon}
+                  <CardTitle className="mt-4">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow text-center">
+                  <p className="text-muted-foreground">{service.description}</p>
+                </CardContent>
+                <div className="p-6 pt-0 text-center">
+                   <p className="text-primary font-semibold hover:underline">
+                    Learn More <ArrowRight className="inline h-4 w-4"/>
+                  </p>
+                </div>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

@@ -3,14 +3,30 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Ambulance, Menu, X } from 'lucide-react';
+import { Ambulance, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
+  { 
+    name: 'Services', 
+    href: '/services',
+    sublinks: [
+      { name: 'Wheelchair Transport', href: '/services/wheelchair-transport'},
+      { name: 'Stretcher Transport', href: '/services/stretcher-transport'},
+      { name: 'Ambulatory Transport', href: '/services/ambulatory-transport'},
+      { name: 'Long Distance Transport', href: '/services/long-distance-transport'},
+    ]
+  },
   { name: 'About Us', href: '/about' },
   { name: 'Testimonials', href: '/testimonials' },
   { name: 'Careers', href: '/careers' },
@@ -35,16 +51,40 @@ export default function Header() {
 
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'text-sm font-medium transition-colors hover:text-primary',
-                pathname === link.href ? 'text-primary' : 'text-muted-foreground'
-              )}
-            >
-              {link.name}
-            </Link>
+            link.sublinks ? (
+              <DropdownMenu key={link.href}>
+                <DropdownMenuTrigger asChild>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      'flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary',
+                      pathname.startsWith(link.href) ? 'text-primary' : 'text-muted-foreground'
+                    )}
+                  >
+                    {link.name}
+                    <ChevronDown className="h-4 w-4" />
+                  </Link>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {link.sublinks.map((sublink) => (
+                    <DropdownMenuItem key={sublink.href} asChild>
+                      <Link href={sublink.href}>{sublink.name}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  'text-sm font-medium transition-colors hover:text-primary',
+                  pathname === link.href ? 'text-primary' : 'text-muted-foreground'
+                )}
+              >
+                {link.name}
+              </Link>
+            )
           ))}
         </nav>
 
@@ -67,7 +107,7 @@ export default function Header() {
         <div className="md:hidden">
           <nav className="flex flex-col items-center gap-4 p-4">
             {navLinks.map((link) => (
-              <Link
+               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
