@@ -1,5 +1,9 @@
+
+'use client';
+
 import Link from 'next/link';
 import { Ambulance, Phone, Mail, MapPin } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const footerLinks = [
   { name: 'Home', href: '/' },
@@ -12,10 +16,16 @@ const footerLinks = [
 ];
 
 export default function Footer() {
+  const [year, setYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-white border-t">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
           <div className="flex flex-col items-center sm:items-start">
             <Link href="/" className="flex items-center gap-2 mb-2">
               <Ambulance className="h-8 w-8 text-primary" />
@@ -67,7 +77,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Stamerck. All rights reserved.</p>
+          <p>&copy; {year} Stamerck. All rights reserved.</p>
         </div>
       </div>
     </footer>
