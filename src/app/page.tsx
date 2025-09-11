@@ -5,14 +5,6 @@ import { Car, HeartHandshake, ShieldCheck, ArrowRight, UserCheck, CalendarCheck,
 import Image from 'next/image';
 import Link from 'next/link';
 
-const heroImage = {
-  id: "hero-transport-van",
-  description: "A fleet of modern ambulance vans ready for service.",
-  imageUrl: "https://picsum.photos/seed/van/2070/1380",
-  imageHint: "ambulance van"
-};
-
-
 const featureCards = [
   {
     icon: <ShieldCheck className="h-10 w-10 text-primary" />,
@@ -32,12 +24,12 @@ const featureCards = [
 ];
 
 const services = [
-    { name: 'Wheelchair Transport', href: '/services', description: 'Safe, comfortable transport for clients requiring wheelchairs.' },
-    { name: 'Ambulatory Transport', href: '/services', description: 'Door-to-door assistance for those who can walk but need a hand.' },
-    { name: 'Stretcher Services', href: '/services', description: 'For clients who must remain in a supine position during transport.' },
-    { name: 'Bariatric Transport', href: '/services', description: 'Specialized vehicles to accommodate bariatric clients with dignity.' },
-    { name: 'Long-Distance Trips', href: '/services', description: 'Comfortable and safe transport for out-of-town medical needs.' },
-    { name: 'Standby Services', href: '/services', description: 'We can wait on-site to provide immediate return transport.' },
+    { name: 'Wheelchair Transport', href: '/services/wheelchair-transport', description: 'Safe, comfortable transport for clients requiring wheelchairs.' },
+    { name: 'Ambulatory Transport', href: '/services/ambulatory-transport', description: 'Door-to-door assistance for those who can walk but need a hand.' },
+    { name: 'Stretcher Services', href: '/services/stretcher-transport', description: 'For clients who must remain in a supine position during transport.' },
+    { name: 'Bariatric Transport', href: '/services/wheelchair-transport', description: 'Specialized vehicles to accommodate bariatric clients with dignity.' },
+    { name: 'Long-Distance Trips', href: '/services/long-distance-transport', description: 'Comfortable and safe transport for out-of-town medical needs.' },
+    { name: 'Standby Services', href: '/contact', description: 'We can wait on-site to provide immediate return transport.' },
 ];
 
 const howItWorks = [
@@ -92,16 +84,16 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <section className="relative h-[60vh] min-h-[400px] w-full">
-        {heroImage &&
+        
           <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
+            src="https://picsum.photos/seed/van/2070/1380"
+            alt="A fleet of modern ambulance vans ready for service."
             fill
             className="object-cover"
-            data-ai-hint={heroImage.imageHint}
+            data-ai-hint="ambulance van"
             priority
           />
-        }
+        
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
           <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4 animate-fade-in-down">
@@ -260,4 +252,5 @@ export default function Home() {
       </section>
     </div>
   );
-}
+
+    
