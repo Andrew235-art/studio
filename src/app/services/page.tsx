@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wheelchair, Stretcher, Car, Users, Clock, HeartHandshake } from "lucide-react";
+import { Wheelchair, StretchVertical, Car, Users, Clock, HeartHandshake } from "lucide-react";
 
 const services = [
   {
@@ -8,7 +8,7 @@ const services = [
     description: "Our vehicles are fully equipped with hydraulic lifts and securement systems to provide safe and comfortable transportation for clients in wheelchairs.",
   },
   {
-    icon: <Stretcher className="h-10 w-10 text-primary" />,
+    icon: <StretchVertical className="h-10 w-10 text-primary" />,
     title: "Stretcher/Gurney Transport",
     description: "For clients who are unable to sit upright, we offer stretcher services with trained personnel to ensure a smooth and safe journey.",
   },
