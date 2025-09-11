@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import ContactForm from "@/components/contact-form";
 
 const faqs = [
   {
@@ -36,6 +37,16 @@ const faqs = [
     answer:
       "Yes, in most cases, we can accommodate one additional passenger, such as a family member or caregiver, at no extra cost. Please let us know when you book your ride.",
   },
+  {
+    question: "Do you provide transportation for non-medical appointments?",
+    answer:
+      "Yes, in addition to medical appointments, we provide transportation for a variety of needs, including social outings, airport transfers, prescription pick-ups, and more. Our goal is to ensure you have reliable transportation for all important occasions.",
+  },
+  {
+    question: "Can I request a specific driver?",
+    answer:
+      "While we cannot guarantee a specific driver for every trip due to scheduling and availability, you can certainly make a request. We will do our best to accommodate your preference whenever possible to ensure your comfort and familiarity.",
+  },
 ];
 
 export default function FaqPage() {
@@ -50,19 +61,32 @@ export default function FaqPage() {
             Find answers to common questions about our services, booking, and more.
           </p>
         </div>
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
+        <div className="max-w-6xl mx-auto">
+           <Accordion type="single" collapsible className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-background rounded-lg mb-4 px-4 shadow-sm">
-                <AccordionTrigger className="text-lg font-semibold text-left hover:no-underline">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-base text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+              <div key={index} className="bg-background rounded-lg px-4 shadow-sm">
+                 <AccordionItem value={`item-${index}`} className="border-b-0">
+                    <AccordionTrigger className="text-lg font-semibold text-left hover:no-underline">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base text-muted-foreground">
+                      {faq.answer}
+                    </AccordionContent>
+                 </AccordionItem>
+              </div>
             ))}
           </Accordion>
+        </div>
+        <div className="max-w-3xl mx-auto mt-24">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">
+                    Still have questions?
+                </h2>
+                <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-lg">
+                    Contact us and we will be happy to help you.
+                </p>
+            </div>
+            <ContactForm />
         </div>
       </div>
     </div>
