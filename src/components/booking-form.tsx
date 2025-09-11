@@ -23,13 +23,12 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Card, CardContent } from '@/components/ui/card';
-import { handleInquiry } from '@/app/booking/actions';
-import type { AIInquiryAssistantOutput } from '@/ai/flows/ai-inquiry-assistant';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Wand2 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { DatePicker } from './date-picker';
 import { TimePicker } from './time-picker';
+import { useToast } from '@/hooks/use-toast';
 
 
 const TransportationDetailSchema = z.object({
@@ -75,9 +74,9 @@ const FormSectionTitle = ({ children }: { children: React.ReactNode }) => (
     </div>
 );
 
-export default function BookingForm() {
-  const [aiResponse, setAiResponse] = useState<AIInquiryAssistantOutput | null>(null);
+export default function BookingForm({onSuccess}: {onSuccess?: () => void}) {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -102,294 +101,240 @@ export default function BookingForm() {
 
   async function onSubmit(values: FormData) {
     setIsLoading(true);
-    setAiResponse(null);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
-    const inquiry = `
-      The user submitted a booking request with the following details:
-      Trip Information:
-      - Contact Name: ${values.contactName}
-      - Contact Phone: ${values.contactPhone}
-      - Trip Type: ${values.tripType}
-      - Pickup Date: ${values.pickupDate.toLocaleDateString()}
-      - Pickup Time: ${values.pickupTime}
-      Transportation Details: ${values.transportationDetails?.join(', ') || 'None'}
-      Patient Information:
-      - Patient Name: ${values.patientName}
-      - Patient Phone: ${values.patientPhone}
-      Pick Up Address:
-      - Address: ${values.pickupAddress}, ${values.pickupCity}, ${values.pickupZip}
-      - Phone: ${values.pickupPhone}
-      Destination Address:
-      - Address: ${values.destinationAddress}, ${values.destinationCity}, ${values.destinationZip}
-      Confirmation Email: ${values.confirmationEmail}
-      Notes: ${values.notes}
-    `;
+    setIsLoading(false);
+    console.log('Form submitted:', values);
 
-    try {
-      const response = await handleInquiry({ inquiry });
-      setAiResponse(response);
-    } catch (error) {
-      console.error('Error handling inquiry:', error);
-      // Here you could use a toast notification to show an error to the user
-    } finally {
-      setIsLoading(false);
+    toast({
+      title: 'Booking Request Sent!',
+      description: 'Thank you for your request. We will review the details and get back to you with a quote shortly.',
+    });
+    
+    form.reset();
+    if(onSuccess) {
+      onSuccess();
     }
   }
 
   return (
     <>
-      <Card className="shadow-lg border-none">
-        <CardContent className="p-6 md:p-8">
-            <div className="text-center mb-8">
-                <p className="font-bold text-destructive">*This form must be submitted 24 Hours in advance of the appointment for a quote and to be scheduled*</p>
-                <p className="text-muted-foreground mt-2 text-sm">Please fill out the form completely. Please note that an extra attendant (two-man) is required if the customer weighs more than 180lbs or if there are more than two stairs involved.</p>
-            </div>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormSectionTitle>TRIP INFORMATION</FormSectionTitle>
+        <div className="text-center mb-8">
+            <p className="font-bold text-destructive">*This form must be submitted 24 Hours in advance of the appointment for a quote and to be scheduled*</p>
+            <p className="text-muted-foreground mt-2 text-sm">Please fill out the form completely. Please note that an extra attendant (two-man) is required if the customer weighs more than 180lbs or if there are more than two stairs involved.</p>
+        </div>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <FormSectionTitle>TRIP INFORMATION</FormSectionTitle>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="contactName" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Contact Name*</FormLabel>
-                            <FormControl><Input {...field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                    <FormField control={form.control} name="contactPhone" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Contact Phone</FormLabel>
-                            <FormControl><Input type="tel" {...field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                </div>
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="tripType" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Trip Type*</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                    <SelectTrigger><SelectValue placeholder="Select Trip Type" /></SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                    <SelectItem value="one-way">One-Way</SelectItem>
-                                    <SelectItem value="round-trip">Round-Trip</SelectItem>
-                                    <SelectItem value="multi-destination">Multi-Destination</SelectItem>
-                                </SelectContent>
-                            </Select>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                    <div></div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-                    <FormField control={form.control} name="pickupDate" render={({ field }) => (
-                        <FormItem className="flex flex-col">
-                            <FormLabel>Requested Pick-up Date*</FormLabel>
-                            <DatePicker field={field} />
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                    <FormField control={form.control} name="pickupTime" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Requested Pick-up Time*</FormLabel>
-                            <FormControl><TimePicker field={field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                </div>
-
-                <FormSectionTitle>TRANSPORTATION DETAILS</FormSectionTitle>
-                <FormField
-                  control={form.control}
-                  name="transportationDetails"
-                  render={() => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="contactName" render={({ field }) => (
                     <FormItem>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {transportationDetails.map((item) => (
-                          <FormField
-                            key={item.id}
-                            control={form.control}
-                            name="transportationDetails"
-                            render={({ field }) => {
-                              return (
-                                <FormItem
-                                  key={item.id}
-                                  className="flex flex-row items-start space-x-3 space-y-0"
-                                >
-                                  <FormControl>
-                                    <Checkbox
-                                      checked={field.value?.includes(item.id)}
-                                      onCheckedChange={(checked) => {
-                                        return checked
-                                          ? field.onChange([...(field.value || []), item.id])
-                                          : field.onChange(
-                                              field.value?.filter(
-                                                (value) => value !== item.id
-                                              )
-                                            )
-                                      }}
-                                    />
-                                  </FormControl>
-                                  <FormLabel className="font-normal">
-                                    {item.label}
-                                  </FormLabel>
-                                </FormItem>
-                              )
-                            }}
-                          />
-                        ))}
-                      </div>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              <FormField control={form.control} name="notes" render={({ field }) => (
-                  <FormItem>
-                      <FormLabel>Notes/Special Needs/Et cetera:</FormLabel>
-                      <FormControl><Textarea className="min-h-[100px]" {...field} /></FormControl>
-                      <FormMessage />
-                  </FormItem>
-              )} />
-              
-                <FormSectionTitle>PATIENT INFORMATION</FormSectionTitle>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="patientName" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Patient Name*</FormLabel>
-                            <FormControl><Input {...field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                    <FormField control={form.control} name="patientPhone" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Patient Phone #*</FormLabel>
-                            <FormControl><Input type="tel" {...field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                </div>
-              
-                <FormSectionTitle>PICK UP ADDRESS</FormSectionTitle>
-                <FormField control={form.control} name="pickupAddress" render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Address*</FormLabel>
+                        <FormLabel>Contact Name*</FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="pickupCity" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>City*</FormLabel>
-                            <FormControl><Input {...field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                    <FormField control={form.control} name="pickupZip" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Zip Code*</FormLabel>
-                            <FormControl><Input {...field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                </div>
-                 <FormField control={form.control} name="pickupPhone" render={({ field }) => (
+                <FormField control={form.control} name="contactPhone" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Phone #*</FormLabel>
+                        <FormLabel>Contact Phone</FormLabel>
                         <FormControl><Input type="tel" {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
-
-                <FormSectionTitle>DESTINATION ADDRESS</FormSectionTitle>
-                <FormField control={form.control} name="destinationAddress" render={({ field }) => (
+            </div>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="tripType" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Address*</FormLabel>
+                        <FormLabel>Trip Type*</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                                <SelectTrigger><SelectValue placeholder="Select Trip Type" /></SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                                <SelectItem value="one-way">One-Way</SelectItem>
+                                <SelectItem value="round-trip">Round-Trip</SelectItem>
+                                <SelectItem value="multi-destination">Multi-Destination</SelectItem>
+                            </SelectContent>
+                        </Select>
+                        <FormMessage />
+                    </FormItem>
+                )} />
+                <div></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+                <FormField control={form.control} name="pickupDate" render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                        <FormLabel>Requested Pick-up Date*</FormLabel>
+                        <DatePicker field={field} />
+                        <FormMessage />
+                    </FormItem>
+                )} />
+                <FormField control={form.control} name="pickupTime" render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Requested Pick-up Time*</FormLabel>
+                        <FormControl><TimePicker field={field} /></FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )} />
+            </div>
+
+            <FormSectionTitle>TRANSPORTATION DETAILS</FormSectionTitle>
+            <FormField
+              control={form.control}
+              name="transportationDetails"
+              render={() => (
+                <FormItem>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {transportationDetails.map((item) => (
+                      <FormField
+                        key={item.id}
+                        control={form.control}
+                        name="transportationDetails"
+                        render={({ field }) => {
+                          return (
+                            <FormItem
+                              key={item.id}
+                              className="flex flex-row items-start space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(item.id)}
+                                  onCheckedChange={(checked) => {
+                                    return checked
+                                      ? field.onChange([...(field.value || []), item.id])
+                                      : field.onChange(
+                                          field.value?.filter(
+                                            (value) => value !== item.id
+                                          )
+                                        )
+                                  }}
+                                />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                {item.label}
+                              </FormLabel>
+                            </FormItem>
+                          )
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          <FormField control={form.control} name="notes" render={({ field }) => (
+              <FormItem>
+                  <FormLabel>Notes/Special Needs/Et cetera:</FormLabel>
+                  <FormControl><Textarea className="min-h-[100px]" {...field} /></FormControl>
+                  <FormMessage />
+              </FormItem>
+          )} />
+          
+            <FormSectionTitle>PATIENT INFORMATION</FormSectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="patientName" render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Patient Name*</FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="destinationCity" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>City*</FormLabel>
-                            <FormControl><Input {...field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                    <FormField control={form.control} name="destinationZip" render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Zip Code*</FormLabel>
-                            <FormControl><Input {...field} /></FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )} />
-                </div>
-
-                <FormField control={form.control} name="confirmationEmail" render={({ field }) => (
-                  <FormItem>
-                      <FormLabel>Confirmation Email Address</FormLabel>
-                      <FormControl><Input type="email" {...field} /></FormControl>
-                      <FormMessage />
-                  </FormItem>
+                <FormField control={form.control} name="patientPhone" render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Patient Phone #*</FormLabel>
+                        <FormControl><Input type="tel" {...field} /></FormControl>
+                        <FormMessage />
+                    </FormItem>
                 )} />
-              
-                <div className="pt-6">
-                    <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
-                        {isLoading ? (
-                        <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Submitting...
-                        </>
-                        ) : 'Submit Request'}
-                    </Button>
-                </div>
-                
-                 <div className="text-center pt-6">
-                    <h3 className="font-bold text-foreground">IMPORTANT: CANCELATION POLICY</h3>
-                    <p className="text-muted-foreground mt-2 text-sm max-w-2xl mx-auto">Passengers are encouraged to cancel scheduled rides at least 24 hours in advance if possible. Any cancellation received later than 24 hours prior to the scheduled pick-up will be considered a late cancellation</p>
-                </div>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+            </div>
+          
+            <FormSectionTitle>PICK UP ADDRESS</FormSectionTitle>
+            <FormField control={form.control} name="pickupAddress" render={({ field }) => (
+                <FormItem>
+                    <FormLabel>Address*</FormLabel>
+                    <FormControl><Input {...field} /></FormControl>
+                    <FormMessage />
+                </FormItem>
+            )} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="pickupCity" render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>City*</FormLabel>
+                        <FormControl><Input {...field} /></FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )} />
+                <FormField control={form.control} name="pickupZip" render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Zip Code*</FormLabel>
+                        <FormControl><Input {...field} /></FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )} />
+            </div>
+             <FormField control={form.control} name="pickupPhone" render={({ field }) => (
+                <FormItem>
+                    <FormLabel>Phone #*</FormLabel>
+                    <FormControl><Input type="tel" {...field} /></FormControl>
+                    <FormMessage />
+                </FormItem>
+            )} />
 
-      {isLoading && (
-         <Card className="mt-8 animate-pulse">
-            <CardHeader>
-                <CardTitle className="flex items-center">
-                    <Wand2 className="mr-2 h-5 w-5" />
-                    AI Assistant is thinking...
-                </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-                <div className="h-4 bg-muted rounded w-3/4"></div>
-                <div className="h-4 bg-muted rounded w-1/2"></div>
-                <div className="h-4 bg-muted rounded w-full mt-4"></div>
-                <div className="h-4 bg-muted rounded w-2/3"></div>
-            </CardContent>
-        </Card>
-      )}
+            <FormSectionTitle>DESTINATION ADDRESS</FormSectionTitle>
+            <FormField control={form.control} name="destinationAddress" render={({ field }) => (
+                <FormItem>
+                    <FormLabel>Address*</FormLabel>
+                    <FormControl><Input {...field} /></FormControl>
+                    <FormMessage />
+                </FormItem>
+            )} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="destinationCity" render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>City*</FormLabel>
+                        <FormControl><Input {...field} /></FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )} />
+                <FormField control={form.control} name="destinationZip" render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Zip Code*</FormLabel>
+                        <FormControl><Input {...field} /></FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )} />
+            </div>
 
-      {aiResponse && (
-        <Card className="mt-8 bg-muted border-primary/20">
-          <CardHeader>
-            <CardTitle className="flex items-center text-2xl">
-              <Wand2 className="mr-3 h-6 w-6 text-primary" />
-              AI-Enhanced Response
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-lg max-w-none">
-            <h3 className="font-semibold">Response to Your Inquiry:</h3>
-            <p>{aiResponse.response}</p>
-            <h3 className="font-semibold mt-6">Suggested Additional Services:</h3>
-            <p>{aiResponse.suggestedServices}</p>
-          </CardContent>
-        </Card>
-      )}
+            <FormField control={form.control} name="confirmationEmail" render={({ field }) => (
+              <FormItem>
+                  <FormLabel>Confirmation Email Address</FormLabel>
+                  <FormControl><Input type="email" {...field} /></FormControl>
+                  <FormMessage />
+              </FormItem>
+            )} />
+          
+            <div className="pt-6">
+                <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
+                    {isLoading ? (
+                    <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Submitting...
+                    </>
+                    ) : 'Submit Request'}
+                </Button>
+            </div>
+            
+             <div className="text-center pt-6">
+                <h3 className="font-bold text-foreground">IMPORTANT: CANCELATION POLICY</h3>
+                <p className="text-muted-foreground mt-2 text-sm max-w-2xl mx-auto">Passengers are encouraged to cancel scheduled rides at least 24 hours in advance if possible. Any cancellation received later than 24 hours prior to the scheduled pick-up will be considered a late cancellation</p>
+            </div>
+        </form>
+      </Form>
     </>
   );
 }
