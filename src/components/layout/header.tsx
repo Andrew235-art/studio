@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -23,10 +24,13 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <Ambulance className="h-8 w-8 text-primary" />
-          <span className="font-headline text-xl font-bold">Stamerck</span>
+          <div>
+            <span className="font-headline text-xl font-bold">Stamerck</span>
+            <p className="text-xs text-primary font-medium -mt-1">Reliable Medical Transport</p>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
