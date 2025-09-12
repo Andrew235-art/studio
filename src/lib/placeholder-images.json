@@ -3,26 +3,26 @@
   "placeholderImages": [
     {
       "id": "about-us-team",
-      "description": "A happy patient being assisted out of a wheelchair by a caring staff member.",
-      "imageUrl": "https://picsum.photos/seed/patient/1200/800",
-      "imageHint": "happy patient"
+      "description": "Professional medical transportation team assisting a patient",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1661351553991-f039d72babe1?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "medical team"
     },
     {
       "id": "team-member-1",
-      "description": "Portrait of a friendly and professional male driver in uniform.",
-      "imageUrl": "https://picsum.photos/seed/driverone/400/400",
-      "imageHint": "male driver"
+      "description": "Professional male transportation driver in uniform",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      "imageHint": "professional driver"
     },
     {
       "id": "team-member-2",
-      "description": "Portrait of a smiling female coordinator with a headset.",
-      "imageUrl": "https://picsum.photos/seed/coordinator/400/400",
-      "imageHint": "female coordinator"
+      "description": "Professional female transportation coordinator",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      "imageHint": "transportation coordinator"
     },
     {
       "id": "team-member-3",
-      "description": "Portrait of a caring medical transportation professional.",
-      "imageUrl": "https://picsum.photos/seed/professional/400/400",
+      "description": "Caring medical transportation professional",
+      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
       "imageHint": "medical professional"
     },
     {

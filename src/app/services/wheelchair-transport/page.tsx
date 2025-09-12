@@ -29,11 +29,11 @@ export default function WheelchairTransportPage() {
           </div>
           <div className="relative h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://picsum.photos/seed/wheelchair/800/600"
-              alt="Client in a wheelchair being assisted"
+              src="https://plus.unsplash.com/premium_photo-1683140703744-75ae86379b65?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2hlZWxjaGFpciUyMG93bmVyJTIwZ2V0dGluZyUyMG9mZiUyMHRoZSUyMGNhcnxlbnwwfHwwfHx8MA%3D%3D"
+              alt="Wheelchair accessible vehicle with ramp for safe transportation"
               fill
               className="object-cover"
-              data-ai-hint="wheelchair patient"
+              data-ai-hint="wheelchair transport vehicle"
             />
           </div>
         </div>

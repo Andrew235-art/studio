@@ -86,7 +86,7 @@ export default function Home() {
       <section className="relative h-[60vh] min-h-[400px] w-full">
         
           <Image
-            src="https://picsum.photos/seed/ambulances/2070/1380"
+            src="https://images.unsplash.com/photo-1635883133007-d4647684ac26?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFtYnVsYW5jZSUyMGZsZWV0fGVufDB8fDB8fHww"
             alt="A fleet of ambulances parked and ready for service."
             fill
             className="object-cover"
@@ -253,7 +253,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-
-    

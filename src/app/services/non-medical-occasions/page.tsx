@@ -39,11 +39,11 @@ export default function NonMedicalOccasionsPage() {
           </div>
           <div className="relative h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://picsum.photos/seed/citydrive/800/600"
-              alt="A car driving through a pleasant city scene"
+              src="https://images.unsplash.com/photo-1571001437100-9d282569809b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Luxury vehicle for comfortable transportation to various occasions"
               fill
               className="object-cover"
-              data-ai-hint="city driving"
+              data-ai-hint="luxury transportation"
             />
           </div>
         </div>

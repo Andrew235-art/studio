@@ -29,11 +29,11 @@ export default function StretcherTransportPage() {
           </div>
           <div className="relative h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://picsum.photos/seed/stretcher/800/600"
-              alt="Stretcher being loaded into a van"
+              src="https://plus.unsplash.com/premium_photo-1663013286034-10e830784135?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Medical professionals safely transporting a patient on a stretcher"
               fill
               className="object-cover"
-              data-ai-hint="stretcher patient"
+              data-ai-hint="stretcher transport"
             />
           </div>
         </div>

@@ -9,42 +9,42 @@ const testimonials = [
     role: "Client",
     testimonial: "Stamerck has been a lifesaver for my mother's appointments. They are always on time, professional, and so caring. I can't recommend them enough!",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=1"
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   },
   {
     name: "David Chen",
     role: "Son of Client",
     testimonial: "The drivers are incredibly patient and understanding. They make my father feel safe and comfortable on every trip. A truly first-class service.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=2"
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   },
   {
     name: "Sarah Williams",
     role: "Client",
     testimonial: "Booking is so easy, and the team is always accommodating, even with last-minute schedule changes. Reliable and stress-free.",
     rating: 5,
-     avatar: "https://i.pravatar.cc/150?img=3"
+     avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   },
   {
     name: "Robert Brown",
     role: "Dialysis Patient",
     testimonial: "I use Stamerck three times a week for my dialysis appointments. They've never once been late. The vehicles are clean and comfortable.",
     rating: 4.5,
-     avatar: "https://i.pravatar.cc/150?img=4"
+     avatar: "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   },
   {
     name: "Emily Davis",
     role: "Daughter of Client",
     testimonial: "Finding reliable transport for my mom's wheelchair was a challenge until we found Stamerck. Their team is professional, and the vehicles are perfectly equipped.",
     rating: 5,
-     avatar: "https://i.pravatar.cc/150?img=5"
+     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   },
    {
     name: "Michael Rodriguez",
     role: "Client",
     testimonial: "Excellent service from start to finish. The booking process was simple, and the driver was friendly and professional. I felt very well taken care of.",
     rating: 5,
-     avatar: "https://i.pravatar.cc/150?img=6"
+     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   }
 ];
 

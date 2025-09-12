@@ -29,11 +29,11 @@ export default function LongDistanceTransportPage() {
           </div>
           <div className="relative h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://picsum.photos/seed/longroad/800/600"
-              alt="Open road for long distance transport"
+              src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+              alt="Comfortable and spacious vehicle for long distance medical transportation"
               fill
               className="object-cover"
-              data-ai-hint="long road"
+              data-ai-hint="long distance medical transport"
             />
           </div>
         </div>
