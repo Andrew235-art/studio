@@ -86,11 +86,11 @@ export default function Home() {
       <section className="relative h-[60vh] min-h-[400px] w-full">
         
           <Image
-            src="https://picsum.photos/seed/van/2070/1380"
+            src="https://picsum.photos/seed/fleet/2070/1380"
             alt="A fleet of modern ambulance vans ready for service."
             fill
             className="object-cover"
-            data-ai-hint="ambulance van"
+            data-ai-hint="ambulance fleet"
             priority
           />
         
@@ -253,5 +253,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
