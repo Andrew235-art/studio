@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start space-y-4">
              <Link href="/">
-                <Logo />
+                <Logo className="w-48"/>
              </Link>
             <p className="text-primary-foreground/80 text-sm max-w-xs px-4 sm:px-0">
               Providing reliable and compassionate non-emergency medical transportation.
