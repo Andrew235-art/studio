@@ -32,8 +32,6 @@ const navLinks = [
   },
   { name: 'About Us', href: '/about' },
   { name: 'Testimonials', href: '/testimonials' },
-  { name: 'Careers', href: '/careers' },
-  { name: 'FAQ', href: '/faq' },
   { name: 'Contact', href: '/contact' },
 ];
 
