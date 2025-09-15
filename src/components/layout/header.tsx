@@ -45,7 +45,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/">
-          <Logo className="h-14 w-48" />
+          <Logo className="w-48" />
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
