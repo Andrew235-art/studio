@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
@@ -53,6 +53,8 @@ const formSchema = z.object({
   tripType: z.string().min(1, 'Trip type is required.'),
   pickupDate: z.date({ required_error: "A pick-up date is required." }),
   pickupTime: z.string().min(1, 'Pick-up time is required.'),
+  recurringStartDate: z.date().optional(),
+  recurringEndDate: z.date().optional(),
   transportationDetails: z.array(z.string()).optional(),
   notes: z.string().optional(),
   patientName: z.string().min(1, 'Patient name is required.'),
@@ -65,6 +67,22 @@ const formSchema = z.object({
   destinationCity: z.string().min(1, 'Destination city is required.'),
   destinationZip: z.string().min(5, 'A valid zip code is required.'),
   confirmationEmail: z.string().email('A valid email is required.'),
+}).refine(data => {
+    if (data.tripType === 'recurring' && !data.recurringStartDate) {
+        return false;
+    }
+    return true;
+}, {
+    message: 'Recurring start date is required.',
+    path: ['recurringStartDate'],
+}).refine(data => {
+    if (data.tripType === 'recurring' && !data.recurringEndDate) {
+        return false;
+    }
+    return true;
+}, {
+    message: 'Recurring end date is required.',
+    path: ['recurringEndDate'],
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -101,6 +119,8 @@ export default function BookingForm() {
       transportationDetails: [],
     },
   });
+
+  const tripType = form.watch('tripType');
 
   async function onSubmit(values: FormData) {
     setIsLoading(true);
@@ -158,6 +178,7 @@ export default function BookingForm() {
                                 <SelectItem value="one-way">One-Way</SelectItem>
                                 <SelectItem value="round-trip">Round-Trip</SelectItem>
                                 <SelectItem value="multi-destination">Multi-Destination</SelectItem>
+                                <SelectItem value="recurring">Recurring Daily</SelectItem>
                             </SelectContent>
                         </Select>
                         <FormMessage />
@@ -166,22 +187,52 @@ export default function BookingForm() {
                 <div></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-                <FormField control={form.control} name="pickupDate" render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                        <FormLabel>Requested Pick-up Date*</FormLabel>
-                        <DatePicker field={field} />
-                        <FormMessage />
-                    </FormItem>
-                )} />
-                <FormField control={form.control} name="pickupTime" render={({ field }) => (
+            {tripType === 'recurring' ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+                     <FormField control={form.control} name="recurringStartDate" render={({ field }) => (
+                        <FormItem className="flex flex-col">
+                            <FormLabel>Recurring Start Date*</FormLabel>
+                            <DatePicker field={field} />
+                            <FormMessage />
+                        </FormItem>
+                    )} />
+                     <FormField control={form.control} name="recurringEndDate" render={({ field }) => (
+                        <FormItem className="flex flex-col">
+                            <FormLabel>Recurring End Date*</FormLabel>
+                            <DatePicker field={field} />
+                            <FormMessage />
+                        </FormItem>
+                    )} />
+                </div>
+            ) : (
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+                    <FormField control={form.control} name="pickupDate" render={({ field }) => (
+                        <FormItem className="flex flex-col">
+                            <FormLabel>Requested Pick-up Date*</FormLabel>
+                            <DatePicker field={field} />
+                            <FormMessage />
+                        </FormItem>
+                    )} />
+                    <FormField control={form.control} name="pickupTime" render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Requested Pick-up Time*</FormLabel>
+                            <FormControl><TimePicker field={field} /></FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )} />
+                </div>
+            )}
+            
+            {tripType === 'recurring' && (
+                 <FormField control={form.control} name="pickupTime" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Requested Pick-up Time*</FormLabel>
+                        <FormLabel>Requested Pick-up Time for recurring rides*</FormLabel>
                         <FormControl><TimePicker field={field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
-            </div>
+            )}
+
 
             <FormSectionTitle>TRANSPORTATION DETAILS</FormSectionTitle>
             <FormField
@@ -339,3 +390,5 @@ export default function BookingForm() {
     </>
   );
 }
+
+    
