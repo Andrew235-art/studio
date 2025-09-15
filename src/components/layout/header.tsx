@@ -44,13 +44,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-8 w-8 text-primary" />
-          <div>
-            <span className="font-headline text-xl font-bold tracking-tight text-foreground">STAMERCK </span>
-             <span className="font-headline text-xl font-bold text-primary">ENTERPRISE</span>
-            <p className="text-xs text-muted-foreground font-medium -mt-1">...Safety Rides on Angels Wings</p>
-          </div>
+        <Link href="/">
+          <Logo className="h-16 w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -60,7 +55,7 @@ export default function Header() {
                 <DropdownMenuTrigger asChild>
                    <button className={cn(
                       'flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus-visible:outline-none',
-                      pathname.startsWith(link.href) ? 'text-primary' : 'text-muted-foreground'
+                      pathname.startsWith(link.href) ? 'text-primary' : 'text-foreground'
                     )}>
                       {link.name}
                       <ChevronDown className="h-4 w-4" />
@@ -83,7 +78,7 @@ export default function Header() {
                 href={link.href}
                 className={cn(
                   'text-sm font-medium transition-colors hover:text-primary',
-                  pathname === link.href ? 'text-primary' : 'text-muted-foreground'
+                  pathname === link.href ? 'text-primary' : 'text-foreground'
                 )}
               >
                 {link.name}

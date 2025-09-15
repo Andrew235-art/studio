@@ -27,15 +27,10 @@ export default function Footer() {
     <footer className="bg-white border-t">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
-          <div className="flex flex-col items-center md:items-start">
-            <Link href="/" className="flex items-center gap-2 mb-2">
-              <Logo className="h-10 w-10 text-primary" />
-              <div>
-                <span className="font-headline text-xl font-bold tracking-tight text-foreground">STAMERCK </span>
-                <span className="font-headline text-xl font-bold text-primary">ENTERPRISE</span>
-                <p className="text-xs text-muted-foreground font-medium -mt-1">...Safety Rides on Angels Wings</p>
-              </div>
-            </Link>
+          <div className="flex flex-col items-center md:items-start space-y-4">
+             <Link href="/">
+                <Logo className="h-20 w-auto" />
+             </Link>
             <p className="text-muted-foreground text-sm max-w-xs px-4 sm:px-0">
               Providing reliable and compassionate non-emergency medical transportation.
             </p>
