@@ -42,12 +42,12 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-10 w-10 text-primary" />
+          <Logo className="h-8 w-8 text-primary" />
           <div>
-            <span className="font-headline text-xl font-bold tracking-tight">STAMERCK</span>
+            <span className="font-headline text-xl font-bold tracking-tight text-foreground">STAMERCK </span>
              <span className="font-headline text-xl font-bold text-primary">ENTERPRISE</span>
             <p className="text-xs text-muted-foreground font-medium -mt-1">...Safety Rides on Angels Wings</p>
           </div>
@@ -108,7 +108,7 @@ export default function Header() {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden bg-white border-t">
           <nav className="flex flex-col items-center gap-4 p-4">
             {navLinks.map((link) => (
                <Link

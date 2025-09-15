@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -30,7 +31,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-2">
               <Logo className="h-10 w-10 text-primary" />
               <div>
-                <span className="font-headline text-xl font-bold tracking-tight">STAMERCK </span>
+                <span className="font-headline text-xl font-bold tracking-tight text-foreground">STAMERCK </span>
                 <span className="font-headline text-xl font-bold text-primary">ENTERPRISE</span>
                 <p className="text-xs text-muted-foreground font-medium -mt-1">...Safety Rides on Angels Wings</p>
               </div>
@@ -40,7 +41,7 @@ export default function Footer() {
             </p>
           </div>
           <div className="sm:text-center lg:text-left">
-            <h3 className="font-semibold mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-foreground mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
@@ -52,7 +53,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="font-semibold mb-4 w-full">Contact Us</h3>
+            <h3 className="font-semibold text-foreground mb-4 w-full">Contact Us</h3>
             <ul className="space-y-3 text-sm flex flex-col items-center md:items-start">
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
@@ -69,7 +70,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="sm:text-center lg:text-left">
-            <h3 className="font-semibold mb-4">Operating Hours</h3>
+            <h3 className="font-semibold text-foreground mb-4">Operating Hours</h3>
             <p className="text-sm text-muted-foreground">
               Monday - Friday: 6:00 AM - 8:00 PM
               <br />
