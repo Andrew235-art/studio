@@ -14,6 +14,7 @@ const footerLinks = [
   { name: 'Careers', href: '/careers' },
   { name: 'Book Now', href: '/booking' },
   { name: 'FAQ', href: '/faq' },
+  { name: 'Make a Payment', href: '/payment'},
 ];
 
 export default function Footer() {
