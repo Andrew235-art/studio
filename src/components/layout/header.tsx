@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Ambulance, Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import Image from 'next/image';
+import Logo from '../logo';
 
 
 const navLinks = [
@@ -43,10 +45,11 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <Ambulance className="h-8 w-8 text-primary" />
+          <Logo className="h-10 w-10 text-primary" />
           <div>
-            <span className="font-headline text-xl font-bold">Stamerck</span>
-            <p className="text-xs text-primary font-medium -mt-1">Reliable Medical Transport</p>
+            <span className="font-headline text-xl font-bold tracking-tight">STAMERCK</span>
+             <span className="font-headline text-xl font-bold text-primary">ENTERPRISE</span>
+            <p className="text-xs text-muted-foreground font-medium -mt-1">...Safety Rides on Angels Wings</p>
           </div>
         </Link>
 

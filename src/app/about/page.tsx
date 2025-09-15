@@ -20,7 +20,7 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-headline font-bold text-foreground">
-            About Stamerck
+            About Stamerck Enterprise
           </h1>
           <p className="text-muted-foreground mt-4 max-w-3xl mx-auto text-lg">
             Connecting our community to healthcare with compassion, one ride at a time.
@@ -40,7 +40,7 @@ export default function AboutPage() {
                 <CardContent className="pt-6">
                   <Quote className="h-8 w-8 text-primary mb-2" />
                   <p className="font-semibold italic text-foreground">
-                    "We started Stamerck with a simple goal: to treat every client like family. That means being on time, ensuring safety, and offering a friendly face."
+                    "We started Stamerck Enterprise with a simple goal: to treat every client like family. That means being on time, ensuring safety, and offering a friendly face."
                   </p>
                   <p className="text-right mt-2 text-sm">- John Doe, Founder</p>
                 </CardContent>

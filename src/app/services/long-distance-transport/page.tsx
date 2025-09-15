@@ -13,7 +13,7 @@ export default function LongDistanceTransportPage() {
               Long Distance Transport
             </h1>
             <p className="text-muted-foreground text-lg mb-6">
-              Stamerck provides safe and comfortable non-emergency medical transportation for long-distance and out-of-state trips. Whether you're relocating, visiting a specialist, or need to travel for any medical reason, we ensure a smooth journey from start to finish.
+              Stamerck Enterprise provides safe and comfortable non-emergency medical transportation for long-distance and out-of-state trips. Whether you're relocating, visiting a specialist, or need to travel for any medical reason, we ensure a smooth journey from start to finish.
             </p>
             <h2 className="text-2xl font-bold text-foreground mb-3">Service Features:</h2>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-8">

@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Ambulance, Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import Logo from '../logo';
 
 const footerLinks = [
   { name: 'Home', href: '/' },
@@ -27,10 +28,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-2">
-              <Ambulance className="h-8 w-8 text-primary" />
+              <Logo className="h-10 w-10 text-primary" />
               <div>
-                <span className="font-headline text-xl font-bold">Stamerck</span>
-                <p className="text-xs text-primary font-medium -mt-1">Reliable Medical Transport</p>
+                <span className="font-headline text-xl font-bold tracking-tight">STAMERCK </span>
+                <span className="font-headline text-xl font-bold text-primary">ENTERPRISE</span>
+                <p className="text-xs text-muted-foreground font-medium -mt-1">...Safety Rides on Angels Wings</p>
               </div>
             </Link>
             <p className="text-muted-foreground text-sm max-w-xs px-4 sm:px-0">
@@ -76,7 +78,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-           {currentYear && <p>&copy; {currentYear} Stamerck. All rights reserved.</p>}
+           {currentYear && <p>&copy; {currentYear} Stamerck Enterprise. All rights reserved.</p>}
         </div>
       </div>
     </footer>

@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Mary Johnson",
     role: "Client",
-    testimonial: "Stamerck has been a lifesaver for my mother's appointments. They are always on time, professional, and so caring. I can't recommend them enough!",
+    testimonial: "Stamerck Enterprise has been a lifesaver for my mother's appointments. They are always on time, professional, and so caring. I can't recommend them enough!",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   },
@@ -28,14 +28,14 @@ const testimonials = [
   {
     name: "Robert Brown",
     role: "Dialysis Patient",
-    testimonial: "I use Stamerck three times a week for my dialysis appointments. They've never once been late. The vehicles are clean and comfortable.",
+    testimonial: "I use Stamerck Enterprise three times a week for my dialysis appointments. They've never once been late. The vehicles are clean and comfortable.",
     rating: 4.5,
      avatar: "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   },
   {
     name: "Emily Davis",
     role: "Daughter of Client",
-    testimonial: "Finding reliable transport for my mom's wheelchair was a challenge until we found Stamerck. Their team is professional, and the vehicles are perfectly equipped.",
+    testimonial: "Finding reliable transport for my mom's wheelchair was a challenge until we found Stamerck Enterprise. Their team is professional, and the vehicles are perfectly equipped.",
     rating: 5,
      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
   },
