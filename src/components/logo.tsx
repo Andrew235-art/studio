@@ -5,10 +5,10 @@ export default function Logo({ className }: { className?: string }) {
     return (
         <div className={cn("relative", className)}>
             <Image
-                src="/logo.png"
+                src="/stamerck-logo.png"
                 alt="Stamerck Enterprise Logo"
                 width={384}
-                height={96}
+                height={154}
                 className="h-auto w-full"
                 priority
             />
