@@ -24,12 +24,12 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-white border-t">
+    <footer className="bg-background border-t">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start space-y-4">
              <Link href="/">
-                <Logo className="h-20 w-48" />
+                <Logo className="h-24 w-52" />
              </Link>
             <p className="text-muted-foreground text-sm max-w-xs px-4 sm:px-0">
               Providing reliable and compassionate non-emergency medical transportation.
