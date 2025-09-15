@@ -1,28 +1,14 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export default function Logo({ className }: { className?: string }) {
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 200 200"
+        <Image
+            src="/logo.png"
+            alt="Stamerck Enterprise Logo"
+            width={40}
+            height={40}
             className={cn("h-10 w-10", className)}
-            fill="none"
-        >
-            <g clipPath="url(#clip0_204_2)">
-                <path
-                    fill="#fff"
-                    d="M100 0c55.23 0 100 44.77 100 100s-44.77 100-100 100S0 155.23 0 100 44.77 0 100 0zm0 18c-45.28 0-82 36.72-82 82s36.72 82 82 82 82-36.72 82-82-36.72-82-82-82z"
-                ></path>
-                <path
-                    fill="currentColor"
-                    d="M141.64 120.31a53.48 53.48 0 00-34.87-49.25l-2.73-1.04-.15.1a81.99 81.99 0 00-47.53 43.14l-1.07 2.4 2.22 1.34c2.8 1.68 5.76 3.12 8.84 4.3l3.52 1.35.8-3.03c.1-.39.2-.77.3-1.16a53.3 53.3 0 0132.06-28.77l2.84-1.2.37.15c14.65 5.92 24.32 19.34 25.13 34.61l.15 2.82 2.86-.88c.95-.28 1.9-.58 2.84-.88l2.1-.72-1.89-2.09zM69.69 135.53l-3.32-1.28c-3.13-1.2-6.14-2.67-9.02-4.36l-2.07-1.2 1.95-2.01 1.01 2.3c.6 1.37 1.25 2.72 1.95 4.04l1.19 2.29 2.5-1.55c.82-.5 1.65-1.01 2.47-1.53l3.34-2.1z"
-                ></path>
-            </g>
-            <defs>
-                <clipPath id="clip0_204_2">
-                    <path fill="#fff" d="M0 0h200v200H0z"></path>
-                </clipPath>
-            </defs>
-        </svg>
+        />
     );
 }
