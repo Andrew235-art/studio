@@ -82,7 +82,7 @@ export default function AboutPage() {
             <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
               {/* Image 1 - Larger */}
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 lg:flex-[2]">
-                <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
+                <div className="relative h-64 sm:h-80 lg:h-96 w-full">
                   <Image
                     src={ceo.image}
                     alt={`${ceo.name} - Professional Portrait`}
@@ -96,7 +96,7 @@ export default function AboutPage() {
               
               {/* Image 2 */}
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
-                <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
+                <div className="relative h-64 sm:h-80 lg:h-96 w-full">
                   <Image
                     src="/ceo-portrait2.jpg"
                     alt={`${ceo.name} - Professional Event Portrait`}
@@ -109,7 +109,7 @@ export default function AboutPage() {
               
               {/* Image 3 */}
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
-                <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
+                <div className="relative h-64 sm:h-80 lg:h-96 w-full">
                   <Image
                     src="/ceo-vehicle.jpg"
                     alt={`${ceo.name} - CEO with Transportation Vehicle`}
