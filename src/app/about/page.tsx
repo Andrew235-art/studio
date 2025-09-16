@@ -78,45 +78,48 @@ export default function AboutPage() {
               </div>
             </div>
             
-            {/* CEO Images Grid - 3 Grid Container */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-              {/* Portrait Image 1 */}
-              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full bg-white">
-                  <Image
-                    src={ceo.image}
-                    alt={`${ceo.name} - Professional Portrait`}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
-              </Card>
+            {/* CEO Images Flexbox Layout - First Image Larger */}
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
+              {/* Main Featured Image - Larger */}
+              <div className="flex-1 lg:flex-[2]">
+                <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+                  <div className="relative h-80 sm:h-96 lg:h-[500px] w-full bg-white">
+                    <Image
+                      src={ceo.image}
+                      alt={`${ceo.name} - Professional Portrait`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      priority
+                    />
+                  </div>
+                </Card>
+              </div>
               
-              {/* Portrait Image 2 */}
-              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full bg-white">
-                  <Image
-                    src="/ceo-portrait2.jpg"
-                    alt={`${ceo.name} - Professional Event Portrait`}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              </Card>
-              
-              {/* Landscape Image - Spans full width */}
-              <div className="lg:col-span-2">
-                <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
+              {/* Smaller Images Container */}
+              <div className="flex flex-col gap-4 lg:gap-6 flex-1">
+                {/* Portrait Image 2 */}
+                <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
+                  <div className="relative h-60 sm:h-72 lg:h-60 w-full bg-white">
+                    <Image
+                      src="/ceo-portrait2.jpg"
+                      alt={`${ceo.name} - Professional Event Portrait`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                    />
+                  </div>
+                </Card>
+                
+                {/* Vehicle Image */}
+                <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
+                  <div className="relative h-60 sm:h-72 lg:h-[228px] w-full bg-white">
                     <Image
                       src="/ceo-vehicle.jpg"
                       alt={`${ceo.name} - CEO with Transportation Vehicle`}
                       fill
                       className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 100vw"
+                      sizes="(max-width: 1024px) 100vw, 40vw"
                     />
                   </div>
                 </Card>
