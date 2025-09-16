@@ -5,12 +5,12 @@ import { Quote } from "lucide-react";
 
 const aboutImage = PlaceHolderImages.find(img => img.id === 'about-us-team');
 
-// CEO information - awaiting details to be provided
+// CEO information
 const ceo = {
-  name: 'CEO Name', // To be updated with actual name
-  role: 'Chief Executive Officer',
+  name: 'Solomon Byaruhanga',
+  role: 'Chief Executive Officer & Founder',
   image: '/ceo-photo.jpg',
-  description: 'Professional description to be added based on provided inspiration text.'
+  description: 'With over 10 years of experience in transportation services and 9 years dedicated to serving people with disabilities, Solomon brings unparalleled expertise and compassion to medical transport. As an immigrant who has built his life through resilience and determination, he understands the challenges people face in accessing essential services. His deep commitment to safe, reliable, and courteous service stems from a genuine love for serving others and ensuring that transportation is never a barrier to healthcare. Solomon\'s background as a community leader and author reflects his passion for making meaningful connections and sharing perspectives that matter. At Stamerck Enterprise, he has created more than a transportation company—he has built a bridge to healthcare access, driven by empathy and anchored in excellence.'
 };
 
 export default function AboutPage() {
