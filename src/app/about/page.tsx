@@ -82,12 +82,12 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
               {/* Portrait Image 1 */}
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full">
+                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full bg-white">
                   <Image
                     src={ceo.image}
                     alt={`${ceo.name} - Professional Portrait`}
                     fill
-                    className="object-contain bg-gray-50"
+                    className="object-cover object-top"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
@@ -96,12 +96,12 @@ export default function AboutPage() {
               
               {/* Portrait Image 2 */}
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full">
+                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full bg-white">
                   <Image
                     src="/ceo-portrait2.jpg"
                     alt={`${ceo.name} - Professional Event Portrait`}
                     fill
-                    className="object-contain bg-gray-50"
+                    className="object-cover object-top"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
@@ -110,12 +110,12 @@ export default function AboutPage() {
               {/* Landscape Image - Spans full width */}
               <div className="lg:col-span-2">
                 <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative h-64 sm:h-80 lg:h-96 w-full">
+                  <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
                     <Image
                       src="/ceo-vehicle.jpg"
                       alt={`${ceo.name} - CEO with Transportation Vehicle`}
                       fill
-                      className="object-contain bg-gray-50"
+                      className="object-cover object-center"
                       sizes="(max-width: 1024px) 100vw, 100vw"
                     />
                   </div>
