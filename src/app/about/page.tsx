@@ -94,34 +94,30 @@ export default function AboutPage() {
                 </div>
               </Card>
               
-              {/* Portrait Image 2 - Placeholder for second CEO image */}
+              {/* Portrait Image 2 */}
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full bg-gray-100 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                      <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                      </svg>
-                    </div>
-                    <p className="text-muted-foreground font-medium">Second CEO Portrait</p>
-                    <p className="text-sm text-muted-foreground mt-2">Image placeholder</p>
-                  </div>
+                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full">
+                  <Image
+                    src="/ceo-portrait2.jpg"
+                    alt={`${ceo.name} - Professional Event Portrait`}
+                    fill
+                    className="object-cover object-[center_20%]"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
               </Card>
               
               {/* Landscape Image - Spans full width */}
               <div className="lg:col-span-2">
                 <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-gray-100 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                        <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                        </svg>
-                      </div>
-                      <p className="text-muted-foreground font-medium">CEO Landscape Photo</p>
-                      <p className="text-sm text-muted-foreground mt-2">Image placeholder - spans full width</p>
-                    </div>
+                  <div className="relative h-64 sm:h-80 lg:h-96 w-full">
+                    <Image
+                      src="/ceo-vehicle.jpg"
+                      alt={`${ceo.name} - CEO with Transportation Vehicle`}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 100vw"
+                    />
                   </div>
                 </Card>
               </div>
