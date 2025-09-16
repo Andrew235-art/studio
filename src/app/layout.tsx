@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: 'Reliable & Compassionate Non-Emergency Medical Transportation.',
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico?v=2', sizes: 'any' },
+      { url: '/favicon.png?v=2', sizes: '32x32', type: 'image/png' },
     ],
   },
 };
