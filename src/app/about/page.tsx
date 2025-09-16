@@ -69,12 +69,13 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden shadow-xl bg-gradient-to-br from-white to-gray-50">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                <div className="relative h-80 lg:h-96 w-full">
+                <div className="relative h-96 lg:h-[500px] w-full">
                   <Image
                     src={ceo.image}
                     alt={`${ceo.name}, ${ceo.role}`}
                     fill
-                    className="object-cover"
+                    className="object-cover object-[center_20%]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <CardContent className="p-8 lg:p-12 flex flex-col justify-center text-left">
