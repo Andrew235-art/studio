@@ -87,7 +87,7 @@ export default function AboutPage() {
                     src={ceo.image}
                     alt={`${ceo.name} - Professional Portrait`}
                     fill
-                    className="object-cover object-[center_20%]"
+                    className="object-contain bg-gray-50"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
@@ -101,7 +101,7 @@ export default function AboutPage() {
                     src="/ceo-portrait2.jpg"
                     alt={`${ceo.name} - Professional Event Portrait`}
                     fill
-                    className="object-cover object-[center_20%]"
+                    className="object-contain bg-gray-50"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
@@ -115,7 +115,7 @@ export default function AboutPage() {
                       src="/ceo-vehicle.jpg"
                       alt={`${ceo.name} - CEO with Transportation Vehicle`}
                       fill
-                      className="object-cover object-center"
+                      className="object-contain bg-gray-50"
                       sizes="(max-width: 1024px) 100vw, 100vw"
                     />
                   </div>
