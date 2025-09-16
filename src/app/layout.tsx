@@ -7,6 +7,12 @@ import Footer from '@/components/layout/footer';
 export const metadata: Metadata = {
   title: 'Stamerck Enterprise: Reliable Medical Transport',
   description: 'Reliable & Compassionate Non-Emergency Medical Transportation.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
