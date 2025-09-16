@@ -4,15 +4,14 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Quote } from "lucide-react";
 
 const aboutImage = PlaceHolderImages.find(img => img.id === 'about-us-team');
-const teamMember1 = PlaceHolderImages.find(img => img.id === 'team-member-1');
-const teamMember2 = PlaceHolderImages.find(img => img.id === 'team-member-2');
-const teamMember3 = PlaceHolderImages.find(img => img.id === 'team-member-3');
 
-const team = [
-  { name: 'John Doe', role: 'Founder & CEO', image: teamMember1 },
-  { name: 'Jane Smith', role: 'Operations Manager', image: teamMember2 },
-  { name: 'Samuel Green', role: 'Lead Driver', image: teamMember3 },
-];
+// CEO information - awaiting details to be provided
+const ceo = {
+  name: 'CEO Name', // To be updated with actual name
+  role: 'Chief Executive Officer',
+  image: '/ceo-photo.jpg',
+  description: 'Professional description to be added based on provided inspiration text.'
+};
 
 export default function AboutPage() {
   return (
@@ -61,31 +60,32 @@ export default function AboutPage() {
 
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground mb-4">
-            Meet Our Team
+            Meet Our CEO
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
-            The dedicated professionals behind our trusted services.
+            Leadership driven by experience, compassion, and commitment to excellence.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} className="text-center overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                {member.image &&
-                  <div className="relative h-64 w-full">
-                    <Image
-                      src={member.image.imageUrl}
-                      alt={member.image.description}
-                      fill
-                      className="object-cover"
-                      data-ai-hint={member.image.imageHint}
-                    />
-                  </div>
-                }
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-primary font-medium">{member.role}</p>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="overflow-hidden shadow-xl bg-gradient-to-br from-white to-gray-50">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                <div className="relative h-80 lg:h-96 w-full">
+                  <Image
+                    src={ceo.image}
+                    alt={`${ceo.name}, ${ceo.role}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <CardContent className="p-8 lg:p-12 flex flex-col justify-center text-left">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">{ceo.name}</h3>
+                  <p className="text-primary font-semibold text-lg mb-6">{ceo.role}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {ceo.description}
+                  </p>
                 </CardContent>
-              </Card>
-            ))}
+              </div>
+            </Card>
           </div>
         </div>
       </div>
