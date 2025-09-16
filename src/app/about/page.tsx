@@ -66,38 +66,66 @@ export default function AboutPage() {
             Leadership driven by experience, compassion, and commitment to excellence.
           </p>
           
-          <div className="max-w-4xl mx-auto">
-            <Card className="overflow-hidden shadow-xl bg-gradient-to-br from-white to-gray-50">
-              <div className="flex flex-col lg:flex-row">
-                {/* CEO Image - Always visible on all screen sizes */}
-                <div 
-                  className="relative w-full lg:w-1/2 flex-shrink-0" 
-                  style={{
-                    height: '320px',
-                    minHeight: '320px'
-                  }}
-                >
+          <div className="max-w-6xl mx-auto">
+            {/* CEO Information */}
+            <div className="text-center mb-8">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">{ceo.name}</h3>
+              <p className="text-primary font-semibold text-lg sm:text-xl mb-6">{ceo.role}</p>
+              <div className="max-w-4xl mx-auto">
+                <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                  {ceo.description}
+                </p>
+              </div>
+            </div>
+            
+            {/* CEO Images Grid - 3 Grid Container */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+              {/* Portrait Image 1 */}
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full">
                   <Image
                     src={ceo.image}
-                    alt={`${ceo.name}, ${ceo.role}`}
+                    alt={`${ceo.name} - Professional Portrait`}
                     fill
                     className="object-cover object-[center_20%]"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
                 </div>
-                {/* CEO Information */}
-                <div className="flex-1">
-                  <CardContent className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center text-left h-full">
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">{ceo.name}</h3>
-                    <p className="text-primary font-semibold text-base sm:text-lg mb-4 lg:mb-6">{ceo.role}</p>
-                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                      {ceo.description}
-                    </p>
-                  </CardContent>
+              </Card>
+              
+              {/* Portrait Image 2 - Placeholder for second CEO image */}
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="relative h-80 sm:h-96 lg:h-[400px] w-full bg-gray-100 flex items-center justify-center">
+                  <div className="text-center p-8">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                      <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                      </svg>
+                    </div>
+                    <p className="text-muted-foreground font-medium">Second CEO Portrait</p>
+                    <p className="text-sm text-muted-foreground mt-2">Image placeholder</p>
+                  </div>
                 </div>
+              </Card>
+              
+              {/* Landscape Image - Spans full width */}
+              <div className="lg:col-span-2">
+                <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-gray-100 flex items-center justify-center">
+                    <div className="text-center p-8">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                        <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                      </div>
+                      <p className="text-muted-foreground font-medium">CEO Landscape Photo</p>
+                      <p className="text-sm text-muted-foreground mt-2">Image placeholder - spans full width</p>
+                    </div>
+                  </div>
+                </Card>
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
