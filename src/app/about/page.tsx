@@ -78,52 +78,47 @@ export default function AboutPage() {
               </div>
             </div>
             
-            {/* CEO Images Flexbox Layout - First Image Larger */}
+            {/* CEO Images Single Flexbox Layout */}
             <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
-              {/* Main Featured Image - Larger */}
-              <div className="flex-1 lg:flex-[2]">
-                <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
-                    <Image
-                      src={ceo.image}
-                      alt={`${ceo.name} - Professional Portrait`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 1024px) 100vw, 60vw"
-                      priority
-                    />
-                  </div>
-                </Card>
-              </div>
+              {/* Image 1 - Larger */}
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 lg:flex-[2]">
+                <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
+                  <Image
+                    src={ceo.image}
+                    alt={`${ceo.name} - Professional Portrait`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+              </Card>
               
-              {/* Smaller Images Container */}
-              <div className="flex flex-col gap-4 lg:gap-6 lg:flex-1">
-                {/* Portrait Image 2 */}
-                <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative h-48 sm:h-56 lg:h-44 w-full bg-white">
-                    <Image
-                      src="/ceo-portrait2.jpg"
-                      alt={`${ceo.name} - Professional Event Portrait`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 1024px) 100vw, 40vw"
-                    />
-                  </div>
-                </Card>
-                
-                {/* Vehicle Image */}
-                <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative h-48 sm:h-56 lg:h-44 w-full bg-white">
-                    <Image
-                      src="/ceo-vehicle.jpg"
-                      alt={`${ceo.name} - CEO with Transportation Vehicle`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 1024px) 100vw, 40vw"
-                    />
-                  </div>
-                </Card>
-              </div>
+              {/* Image 2 */}
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
+                <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
+                  <Image
+                    src="/ceo-portrait2.jpg"
+                    alt={`${ceo.name} - Professional Event Portrait`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                  />
+                </div>
+              </Card>
+              
+              {/* Image 3 */}
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
+                <div className="relative h-64 sm:h-80 lg:h-96 w-full bg-white">
+                  <Image
+                    src="/ceo-vehicle.jpg"
+                    alt={`${ceo.name} - CEO with Transportation Vehicle`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                  />
+                </div>
+              </Card>
             </div>
           </div>
         </div>
