@@ -68,23 +68,34 @@ export default function AboutPage() {
           
           <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden shadow-xl bg-gradient-to-br from-white to-gray-50">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                <div className="relative h-96 lg:h-[500px] w-full">
+              <div className="flex flex-col lg:flex-row">
+                {/* CEO Image - Always visible on all screen sizes */}
+                <div 
+                  className="relative w-full lg:w-1/2 flex-shrink-0" 
+                  style={{
+                    height: '320px',
+                    minHeight: '320px'
+                  }}
+                >
                   <Image
                     src={ceo.image}
                     alt={`${ceo.name}, ${ceo.role}`}
                     fill
                     className="object-cover object-[center_20%]"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
                   />
                 </div>
-                <CardContent className="p-8 lg:p-12 flex flex-col justify-center text-left">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">{ceo.name}</h3>
-                  <p className="text-primary font-semibold text-lg mb-6">{ceo.role}</p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {ceo.description}
-                  </p>
-                </CardContent>
+                {/* CEO Information */}
+                <div className="flex-1">
+                  <CardContent className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center text-left h-full">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">{ceo.name}</h3>
+                    <p className="text-primary font-semibold text-base sm:text-lg mb-4 lg:mb-6">{ceo.role}</p>
+                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                      {ceo.description}
+                    </p>
+                  </CardContent>
+                </div>
               </div>
             </Card>
           </div>
