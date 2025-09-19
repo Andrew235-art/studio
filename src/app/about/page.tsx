@@ -41,21 +41,18 @@ export default function AboutPage() {
                   <p className="font-semibold italic text-foreground">
                     "We started Stamerck Enterprise with a simple goal: to treat every client like family. That means being on time, ensuring safety, and offering a friendly face."
                   </p>
-                  <p className="text-right mt-2 text-sm">- John Doe, Founder</p>
+                  <p className="text-right mt-2 text-sm">- Solomon Byaruhanga, Founder & CEO</p>
                 </CardContent>
             </Card>
           </div>
-          {aboutImage &&
-            <div className="relative h-80 lg:h-full w-full rounded-lg overflow-hidden shadow-xl">
-              <Image
-                src={aboutImage.imageUrl}
-                alt={aboutImage.description}
-                fill
-                className="object-cover"
-                data-ai-hint={aboutImage.imageHint}
-              />
-            </div>
-          }
+          <div className="relative h-80 lg:h-full w-full rounded-lg overflow-hidden shadow-xl">
+            <Image
+              src="/solomon-ceo-team.jpg"
+              alt="Solomon Byaruhanga and the Stamerck Enterprise team with company vehicle"
+              fill
+              className="object-contain bg-gray-50"
+            />
+          </div>
         </div>
 
         <div className="text-center">
