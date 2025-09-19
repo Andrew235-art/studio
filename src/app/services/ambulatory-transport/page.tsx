@@ -29,11 +29,10 @@ export default function AmbulatoryTransportPage() {
           </div>
           <div className="relative h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://images.unsplash.com/photo-1649495271672-7cc719c7ec55?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Caring driver assisting a client with ambulatory transport"
+              src="/attached_assets/IMG-20250919-WA0011_1758292805017.jpg"
+              alt="Stamerck Enterprise professional drivers with company vehicle for ambulatory medical transportation"
               fill
-              className="object-cover"
-              data-ai-hint="assisted walking patient"
+              className="object-contain bg-gray-50"
             />
           </div>
         </div>
