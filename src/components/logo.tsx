@@ -9,7 +9,7 @@ export default function Logo({ className }: { className?: string }) {
                 alt="Stamerck Enterprise Logo"
                 width={384}
                 height={154}
-                className="h-auto w-full"
+                className="h-auto w-full drop-shadow-md filter"
                 priority
             />
         </div>
