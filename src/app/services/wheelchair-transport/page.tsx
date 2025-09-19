@@ -36,23 +36,13 @@ export default function WheelchairTransportPage() {
                 className="object-contain bg-gray-50"
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative h-48 rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/wheelchair-transport-chair.jpg"
-                  alt="Professional wheelchair positioned next to Stamerck Enterprise accessible transport vehicle"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-48 rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/wheelchair-transport-setup.jpg"
-                  alt="Close-up view of wheelchair and accessible vehicle setup showing professional equipment"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+            <div className="relative h-64 w-full rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/wheelchair-transport-chair.jpg"
+                alt="Professional wheelchair positioned next to Stamerck Enterprise accessible transport vehicle"
+                fill
+                className="object-contain bg-gray-50"
+              />
             </div>
           </div>
         </div>
