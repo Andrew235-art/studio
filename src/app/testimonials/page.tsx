@@ -85,8 +85,12 @@ export default function TestimonialsPage() {
                 <p className="text-muted-foreground mb-6 italic">"{testimonial.testimonial}"</p>
               </CardContent>
                <div className="bg-muted p-4 flex items-center gap-4">
-                 <Avatar>
-                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                 <Avatar className="h-12 w-12 flex-shrink-0">
+                    <AvatarImage 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name}
+                      className="object-cover"
+                    />
                     <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div>
