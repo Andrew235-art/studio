@@ -1,8 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import ContactForm from "@/components/contact-form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import NewsletterForm from "@/components/newsletter-form";
 
 export default function ContactPage() {
   const mapSrc = "https://maps.google.com/maps?q=527%20Ellison%20Ct%20Frederick,%20Md&t=&z=15&ie=UTF8&iwloc=&output=embed";
@@ -86,10 +85,7 @@ export default function ContactPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="text-muted-foreground mb-4">Stay up-to-date with our latest news, services, and special offers.</p>
-                        <div className="flex w-full items-center space-x-2">
-                            <Input type="email" placeholder="Enter your email" />
-                            <Button type="submit">Subscribe</Button>
-                        </div>
+                        <NewsletterForm />
                     </CardContent>
                 </Card>
             </div>

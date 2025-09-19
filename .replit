@@ -1,6 +1,7 @@
 modules = ["nodejs-20", "web", "nix"]
 [agent]
 expertMode = true
+integrations = ["replitmail:1.0.0", "javascript_database:1.0.0"]
 
 [nix]
 channel = "stable-25_05"

@@ -48,18 +48,37 @@ export default function ContactForm() {
   async function onSubmit(values: FormData) {
     setIsLoading(true);
 
-    // Simulate an API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
 
-    setIsLoading(false);
-    console.log('Form submitted:', values);
+      const result = await response.json();
 
-    toast({
-      title: 'Message Sent!',
-      description: 'Thank you for contacting us. We will get back to you shortly.',
-    });
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit form');
+      }
 
-    form.reset();
+      toast({
+        title: 'Message Sent!',
+        description: result.message || 'Thank you for contacting us. We will get back to you shortly.',
+      });
+
+      form.reset();
+    } catch (error) {
+      console.error('Contact form error:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

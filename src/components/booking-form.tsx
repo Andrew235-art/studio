@@ -124,20 +124,44 @@ export default function BookingForm() {
 
   async function onSubmit(values: FormData) {
     setIsLoading(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
 
-    setIsLoading(false);
-    console.log('Form submitted:', values);
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...values,
+          pickupDate: values.pickupDate.toISOString(),
+          recurringStartDate: values.recurringStartDate?.toISOString(),
+          recurringEndDate: values.recurringEndDate?.toISOString(),
+        }),
+      });
 
-    toast({
-      title: 'Booking Request Sent!',
-      description: 'Thank you for your request. We will review the details and get back to you with a quote shortly.',
-    });
-    
-    form.reset();
-    router.push('/');
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit booking');
+      }
+
+      toast({
+        title: 'Booking Request Sent!',
+        description: result.message || 'Thank you for your request. We will contact you within 2 hours to confirm.',
+      });
+      
+      form.reset();
+      router.push('/');
+    } catch (error) {
+      console.error('Booking form error:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: error instanceof Error ? error.message : 'Failed to submit booking. Please try again.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
