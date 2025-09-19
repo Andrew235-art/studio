@@ -29,7 +29,7 @@ export default function AmbulatoryTransportPage() {
           </div>
           <div className="relative h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="/attached_assets/IMG-20250919-WA0011_1758292805017.jpg"
+              src="/stamerck-team-vehicle.jpg"
               alt="Stamerck Enterprise professional drivers with company vehicle for ambulatory medical transportation"
               fill
               className="object-contain bg-gray-50"
