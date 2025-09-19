@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification to business
     await sendEmail({
-      to: 'info@stamerckenterprise.com',
+      to: 'bookings@stamerck.com',
       subject: 'New Newsletter Subscription',
       text: `New newsletter subscription from: ${email}\n\nSubscribed at: ${new Date().toLocaleString()}`,
     });

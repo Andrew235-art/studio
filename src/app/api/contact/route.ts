@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification to business
     await sendEmail({
-      to: 'info@stamerckenterprise.com',
+      to: 'bookings@stamerck.com',
       subject: 'New Contact Form Submission',
       text: `New contact form submission received:\n\nContact Name: ${contactName}\nEmail: ${email}\nCompany: ${companyName}\nPhone: ${phone}\nComments: ${comments || 'None'}\n\nSubmitted at: ${new Date().toLocaleString()}`,
       html: `

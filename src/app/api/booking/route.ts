@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification to business
     await sendEmail({
-      to: 'info@stamerckenterprise.com',
+      to: 'bookings@stamerck.com',
       subject: 'New Transportation Booking Request',
       text: `New transportation booking request received:\n\nContact: ${formData.contactName} (${formData.contactPhone})\nPatient: ${formData.patientName} (${formData.patientPhone})\nTrip Type: ${formData.tripType}\nPickup: ${new Date(formData.pickupDate).toLocaleDateString()} at ${formData.pickupTime}\nFrom: ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip} (${formData.pickupPhone})\nTo: ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}\nTransportation: ${transportDetails}\nEmail: ${formData.confirmationEmail}\n${formData.notes ? `Notes: ${formData.notes}` : ''}\n${formData.tripType === 'recurring' ? `Recurring: ${formData.recurringStartDate ? new Date(formData.recurringStartDate).toLocaleDateString() : ''} to ${formData.recurringEndDate ? new Date(formData.recurringEndDate).toLocaleDateString() : ''}` : ''}\n\nSubmitted at: ${new Date().toLocaleString()}\n\nPlease contact the customer within 2 hours to confirm.`,
       html: `
