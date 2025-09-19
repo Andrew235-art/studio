@@ -33,7 +33,7 @@ export default function WheelchairTransportPage() {
                 src="/wheelchair-transport-vehicle.jpg"
                 alt="Stamerck Enterprise wheelchair accessible vehicle interior showing hydraulic ramp and wheelchair securement area"
                 fill
-                className="object-cover"
+                className="object-contain bg-gray-50"
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
