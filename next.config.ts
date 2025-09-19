@@ -67,13 +67,6 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      // Add your WordPress domain here when you set it up
-      {
-        protocol: 'https',
-        hostname: 'your-wordpress-site.com',
-        port: '',
-        pathname: '/**',
-      },
     ],
   },
 };
