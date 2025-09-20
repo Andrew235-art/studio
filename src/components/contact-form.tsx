@@ -97,7 +97,7 @@ export default function ContactForm() {
                 name="contactName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Contact Name*</FormLabel>
+                    <FormLabel>Contact Name <span className="text-red-500">*</span></FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
@@ -110,7 +110,7 @@ export default function ContactForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email*</FormLabel>
+                    <FormLabel>Email <span className="text-red-500">*</span></FormLabel>
                     <FormControl>
                       <Input type="email" {...field} />
                     </FormControl>
@@ -123,7 +123,7 @@ export default function ContactForm() {
                 name="companyName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company Name*</FormLabel>
+                    <FormLabel>Company Name <span className="text-red-500">*</span></FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
@@ -136,7 +136,7 @@ export default function ContactForm() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone*</FormLabel>
+                    <FormLabel>Phone <span className="text-red-500">*</span></FormLabel>
                     <FormControl>
                       <Input type="tel" {...field} />
                     </FormControl>

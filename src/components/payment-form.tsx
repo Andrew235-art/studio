@@ -109,7 +109,7 @@ export default function PaymentForm() {
 
             <FormField control={form.control} name="amount" render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Amount</FormLabel>
+                    <FormLabel>Amount <span className="text-red-500">*</span></FormLabel>
                     <FormControl><Input type="number" step="0.01" {...field} /></FormControl>
                     <FormMessage />
                 </FormItem>
@@ -117,7 +117,7 @@ export default function PaymentForm() {
 
              <FormField control={form.control} name="cardholderName" render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Cardholder Name</FormLabel>
+                    <FormLabel>Cardholder Name <span className="text-red-500">*</span></FormLabel>
                     <FormControl><Input {...field} /></FormControl>
                     <FormMessage />
                 </FormItem>
@@ -125,7 +125,7 @@ export default function PaymentForm() {
 
             <FormField control={form.control} name="cardNumber" render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Card Number</FormLabel>
+                    <FormLabel>Card Number <span className="text-red-500">*</span></FormLabel>
                     <div className="relative">
                         <FormControl><Input type="tel" maxLength={16} {...field} className="pr-12" /></FormControl>
                         <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -137,14 +137,14 @@ export default function PaymentForm() {
             <div className="grid grid-cols-2 gap-6">
                 <FormField control={form.control} name="expiryDate" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Expiry Date (MM/YY)</FormLabel>
+                        <FormLabel>Expiry Date (MM/YY) <span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input placeholder="MM/YY" {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
                 <FormField control={form.control} name="cvv" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>CVV</FormLabel>
+                        <FormLabel>CVV <span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input type="tel" maxLength={4} {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
@@ -155,7 +155,7 @@ export default function PaymentForm() {
 
             <FormField control={form.control} name="billingAddress" render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Address</FormLabel>
+                    <FormLabel>Address <span className="text-red-500">*</span></FormLabel>
                     <FormControl><Input {...field} /></FormControl>
                     <FormMessage />
                 </FormItem>
@@ -164,21 +164,21 @@ export default function PaymentForm() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                  <FormField control={form.control} name="billingCity" render={({ field }) => (
                     <FormItem className="sm:col-span-1">
-                        <FormLabel>City</FormLabel>
+                        <FormLabel>City <span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
                  <FormField control={form.control} name="billingState" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>State</FormLabel>
+                        <FormLabel>State <span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input maxLength={2} {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
                  <FormField control={form.control} name="billingZip" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Zip Code</FormLabel>
+                        <FormLabel>Zip Code <span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input type="tel" maxLength={5} {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
