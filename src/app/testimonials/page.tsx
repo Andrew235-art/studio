@@ -54,7 +54,7 @@ export default function TestimonialsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="flex flex-col justify-between shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6">
