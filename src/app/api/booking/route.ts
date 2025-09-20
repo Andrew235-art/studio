@@ -10,8 +10,10 @@ const bookingSchema = z.object({
   tripType: z.string().min(1, 'Trip type is required.'),
   pickupDate: z.string().min(1, 'Pick-up date is required.'),
   pickupTime: z.string().min(1, 'Pick-up time is required.'),
+  dropOffTime: z.string().min(1, 'Drop-off time is required.'),
   recurringStartDate: z.string().optional(),
   recurringEndDate: z.string().optional(),
+  recurringTransportationDetails: z.string().optional(),
   transportationDetails: z.array(z.string()).optional(),
   notes: z.string().optional(),
   patientName: z.string().min(1, 'Patient name is required.'),
@@ -43,8 +45,10 @@ export async function POST(request: NextRequest) {
       trip_type: formData.tripType,
       pickup_date: pickupDate,
       pickup_time: formData.pickupTime,
+      drop_off_time: formData.dropOffTime,
       recurring_start_date: recurringStartDate,
       recurring_end_date: recurringEndDate,
+      recurring_transportation_details: formData.recurringTransportationDetails || '',
       transportation_details: JSON.stringify(formData.transportationDetails || []),
       notes: formData.notes || '',
       patient_name: formData.patientName,
@@ -69,7 +73,7 @@ export async function POST(request: NextRequest) {
     await sendEmail({
       to: formData.confirmationEmail,
       subject: 'Transportation Booking Request Confirmation',
-      text: `Dear ${formData.contactName},\n\nThank you for your transportation booking request with Stamerck Enterprise. We have received your request and will contact you within 2 hours to confirm availability and finalize details.\n\nBooking Details:\nPatient: ${formData.patientName}\nTrip Type: ${formData.tripType}\nPickup Date: ${new Date(formData.pickupDate).toLocaleDateString()}\nPickup Time: ${formData.pickupTime}\nPickup Address: ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip}\nDestination: ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}\nTransportation Details: ${transportDetails}\n${formData.notes ? `Notes: ${formData.notes}` : ''}\n\nContact Information:\nContact: ${formData.contactName} - ${formData.contactPhone}\nPatient: ${formData.patientName} - ${formData.patientPhone}\nPickup Location: ${formData.pickupPhone}\n\nThank you for choosing Stamerck Enterprise for your transportation needs.\n\nBest regards,\nStamerck Enterprise Team`,
+      text: `Dear ${formData.contactName},\n\nThank you for your transportation booking request with Stamerck Enterprise. We have received your request and will contact you within 2 hours to confirm availability and finalize details.\n\nBooking Details:\nPatient: ${formData.patientName}\nTrip Type: ${formData.tripType}\nPickup Date: ${new Date(formData.pickupDate).toLocaleDateString()}\nPickup Time: ${formData.pickupTime}\nDrop-off Time: ${formData.dropOffTime}\nPickup Address: ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip}\nDestination: ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}\nTransportation Details: ${transportDetails}\n${formData.recurringTransportationDetails ? `Recurring Details: ${formData.recurringTransportationDetails}` : ''}\n${formData.notes ? `Notes: ${formData.notes}` : ''}\n\nContact Information:\nContact: ${formData.contactName} - ${formData.contactPhone}\nPatient: ${formData.patientName} - ${formData.patientPhone}\nPickup Location: ${formData.pickupPhone}\n\nThank you for choosing Stamerck Enterprise for your transportation needs.\n\nBest regards,\nStamerck Enterprise Team`,
       html: `
         <h2>Transportation Booking Request Confirmation</h2>
         <p>Dear ${formData.contactName},</p>
@@ -81,9 +85,11 @@ export async function POST(request: NextRequest) {
           <li><strong>Trip Type:</strong> ${formData.tripType}</li>
           <li><strong>Pickup Date:</strong> ${new Date(formData.pickupDate).toLocaleDateString()}</li>
           <li><strong>Pickup Time:</strong> ${formData.pickupTime}</li>
+          <li><strong>Drop-off Time:</strong> ${formData.dropOffTime}</li>
           <li><strong>Pickup Address:</strong> ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip}</li>
           <li><strong>Destination:</strong> ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}</li>
           <li><strong>Transportation Details:</strong> ${transportDetails}</li>
+          ${formData.recurringTransportationDetails ? `<li><strong>Recurring Details:</strong> ${formData.recurringTransportationDetails}</li>` : ''}
           ${formData.notes ? `<li><strong>Notes:</strong> ${formData.notes}</li>` : ''}
         </ul>
         

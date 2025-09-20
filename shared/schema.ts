@@ -28,8 +28,10 @@ export const bookings = pgTable('bookings', {
   trip_type: text('trip_type').notNull(),
   pickup_date: date('pickup_date').notNull(),
   pickup_time: text('pickup_time').notNull(),
+  drop_off_time: text('drop_off_time').notNull(),
   recurring_start_date: date('recurring_start_date'),
   recurring_end_date: date('recurring_end_date'),
+  recurring_transportation_details: text('recurring_transportation_details'),
   transportation_details: text('transportation_details'), // JSON string
   notes: text('notes'),
   patient_name: text('patient_name').notNull(),
