@@ -25,6 +25,15 @@ const bookingSchema = z.object({
   destinationAddress: z.string().min(1, 'Destination address is required.'),
   destinationCity: z.string().min(1, 'Destination city is required.'),
   destinationZip: z.string().min(5, 'A valid zip code is required.'),
+  hasAdditionalDestinations: z.boolean().optional(),
+  additionalDestinations: z.array(z.object({
+    startDate: z.string(),
+    endDate: z.string(),
+    address: z.string().min(1, 'Address is required.'),
+    city: z.string().min(1, 'City is required.'),
+    zipCode: z.string().min(5, 'A valid zip code is required.'),
+    notes: z.string().optional(),
+  })).optional(),
   confirmationEmail: z.string().email('A valid email is required.'),
 });
 
@@ -60,6 +69,8 @@ export async function POST(request: NextRequest) {
       destination_address: formData.destinationAddress,
       destination_city: formData.destinationCity,
       destination_zip: formData.destinationZip,
+      has_additional_destinations: formData.hasAdditionalDestinations || false,
+      additional_destinations: JSON.stringify(formData.additionalDestinations || []),
       confirmation_email: formData.confirmationEmail,
       submitted_at: new Date(),
       status: 'pending',

@@ -32,6 +32,8 @@ export const bookings = pgTable('bookings', {
   recurring_start_date: date('recurring_start_date'),
   recurring_end_date: date('recurring_end_date'),
   recurring_transportation_details: text('recurring_transportation_details'),
+  has_additional_destinations: boolean('has_additional_destinations').default(false),
+  additional_destinations: text('additional_destinations'), // JSON string
   transportation_details: text('transportation_details'), // JSON string
   notes: text('notes'),
   patient_name: text('patient_name').notNull(),

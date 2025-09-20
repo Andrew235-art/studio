@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Plus, Trash2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -47,6 +48,15 @@ const transportationDetails = [
   { id: 'extra-attendant', label: 'Extra Attendant Needed' },
 ] as const;
 
+const additionalDestinationSchema = z.object({
+  startDate: z.date({ required_error: "Start date is required." }),
+  endDate: z.date({ required_error: "End date is required." }),
+  address: z.string().min(1, 'Address is required.'),
+  city: z.string().min(1, 'City is required.'),
+  zipCode: z.string().min(5, 'A valid zip code is required.'),
+  notes: z.string().optional(),
+});
+
 const formSchema = z.object({
   contactName: z.string().min(1, 'Contact name is required.'),
   contactPhone: z.string().min(10, 'A valid phone number is required.'),
@@ -68,6 +78,8 @@ const formSchema = z.object({
   destinationAddress: z.string().min(1, 'Destination address is required.'),
   destinationCity: z.string().min(1, 'Destination city is required.'),
   destinationZip: z.string().min(5, 'A valid zip code is required.'),
+  hasAdditionalDestinations: z.boolean().optional(),
+  additionalDestinations: z.array(additionalDestinationSchema).optional(),
   confirmationEmail: z.string().email('A valid email is required.'),
 }).refine(data => {
     if (data.tripType === 'recurring' && !data.recurringStartDate) {
@@ -127,12 +139,33 @@ export default function BookingForm() {
       destinationAddress: '',
       destinationCity: '',
       destinationZip: '',
+      hasAdditionalDestinations: false,
+      additionalDestinations: [],
       confirmationEmail: '',
       transportationDetails: [],
     },
   });
 
   const tripType = form.watch('tripType');
+  const hasAdditionalDestinations = form.watch('hasAdditionalDestinations');
+  const additionalDestinations = form.watch('additionalDestinations') || [];
+
+  const addDestination = () => {
+    const currentDestinations = form.getValues('additionalDestinations') || [];
+    form.setValue('additionalDestinations', [...currentDestinations, {
+      startDate: undefined as any,
+      endDate: undefined as any,
+      address: '',
+      city: '',
+      zipCode: '',
+      notes: ''
+    }]);
+  };
+
+  const removeDestination = (index: number) => {
+    const updated = additionalDestinations.filter((_, i) => i !== index);
+    form.setValue('additionalDestinations', updated);
+  };
 
   async function onSubmit(values: FormData) {
     setIsLoading(true);
@@ -425,6 +458,157 @@ export default function BookingForm() {
                     </FormItem>
                 )} />
             </div>
+
+            {/* Additional Destinations Section - Only for Recurring Trips */}
+            {tripType === 'recurring' && (
+                <>
+                    <FormSectionTitle>ADDITIONAL DESTINATIONS</FormSectionTitle>
+                    
+                    <FormField
+                      control={form.control}
+                      name="hasAdditionalDestinations"
+                      render={({ field }) => (
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value}
+                              onCheckedChange={field.onChange}
+                            />
+                          </FormControl>
+                          <div className="space-y-1 leading-none">
+                            <FormLabel>
+                              This booking includes additional destinations beyond the primary destination above
+                            </FormLabel>
+                          </div>
+                        </FormItem>
+                      )}
+                    />
+
+                    {hasAdditionalDestinations && (
+                        <div className="space-y-6">
+                            <div className="bg-gray-50 p-4 rounded-lg border">
+                                <p className="text-sm text-muted-foreground mb-4">
+                                    Add destinations for different segments of your recurring transportation (e.g., different training locations, graduation ceremonies, etc.)
+                                </p>
+                                
+                                {additionalDestinations.map((_, index) => (
+                                    <div key={index} className="border bg-white p-4 rounded-lg mb-4">
+                                        <div className="flex justify-between items-center mb-4">
+                                            <h4 className="font-medium">Additional Destination {index + 1}</h4>
+                                            {additionalDestinations.length > 1 && (
+                                                <Button
+                                                    type="button"
+                                                    variant="outline"
+                                                    size="sm"
+                                                    onClick={() => removeDestination(index)}
+                                                >
+                                                    <Trash2 className="h-4 w-4" />
+                                                </Button>
+                                            )}
+                                        </div>
+                                        
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <FormField
+                                                control={form.control}
+                                                name={`additionalDestinations.${index}.startDate`}
+                                                render={({ field }) => (
+                                                    <FormItem className="flex flex-col">
+                                                        <FormLabel>Start Date<span className="text-red-500">*</span></FormLabel>
+                                                        <DatePicker field={field} />
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                name={`additionalDestinations.${index}.endDate`}
+                                                render={({ field }) => (
+                                                    <FormItem className="flex flex-col">
+                                                        <FormLabel>End Date<span className="text-red-500">*</span></FormLabel>
+                                                        <DatePicker field={field} />
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </div>
+                                        
+                                        <FormField
+                                            control={form.control}
+                                            name={`additionalDestinations.${index}.address`}
+                                            render={({ field }) => (
+                                                <FormItem className="mb-4">
+                                                    <FormLabel>Address<span className="text-red-500">*</span></FormLabel>
+                                                    <FormControl>
+                                                        <Input {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <FormField
+                                                control={form.control}
+                                                name={`additionalDestinations.${index}.city`}
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel>City<span className="text-red-500">*</span></FormLabel>
+                                                        <FormControl>
+                                                            <Input {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                name={`additionalDestinations.${index}.zipCode`}
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel>Zip Code<span className="text-red-500">*</span></FormLabel>
+                                                        <FormControl>
+                                                            <Input {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </div>
+                                        
+                                        <FormField
+                                            control={form.control}
+                                            name={`additionalDestinations.${index}.notes`}
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel>Notes (Optional)</FormLabel>
+                                                    <FormControl>
+                                                        <Textarea 
+                                                            className="min-h-[80px]" 
+                                                            placeholder="Additional details about this destination..."
+                                                            {...field} 
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                ))}
+                                
+                                <Button
+                                    type="button"
+                                    variant="outline"
+                                    onClick={addDestination}
+                                    className="w-full"
+                                >
+                                    <Plus className="h-4 w-4 mr-2" />
+                                    Add Another Destination
+                                </Button>
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
 
             <FormField control={form.control} name="confirmationEmail" render={({ field }) => (
               <FormItem>
