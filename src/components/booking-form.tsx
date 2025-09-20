@@ -53,8 +53,10 @@ const formSchema = z.object({
   tripType: z.string().min(1, 'Trip type is required.'),
   pickupDate: z.date({ required_error: "A pick-up date is required." }),
   pickupTime: z.string().min(1, 'Pick-up time is required.'),
+  dropOffTime: z.string().min(1, 'Drop-off time is required.'),
   recurringStartDate: z.date().optional(),
   recurringEndDate: z.date().optional(),
+  recurringTransportationDetails: z.string().optional(),
   transportationDetails: z.array(z.string()).optional(),
   notes: z.string().optional(),
   patientName: z.string().min(1, 'Patient name is required.'),
@@ -83,6 +85,14 @@ const formSchema = z.object({
 }, {
     message: 'Recurring end date is required.',
     path: ['recurringEndDate'],
+}).refine(data => {
+    if (data.tripType === 'recurring' && (!data.recurringTransportationDetails || data.recurringTransportationDetails.trim() === '')) {
+        return false;
+    }
+    return true;
+}, {
+    message: 'Recurring transportation details are required.',
+    path: ['recurringTransportationDetails'],
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -105,6 +115,8 @@ export default function BookingForm() {
       contactName: '',
       contactPhone: '',
       tripType: '',
+      dropOffTime: '',
+      recurringTransportationDetails: '',
       notes: '',
       patientName: '',
       patientPhone: '',
@@ -247,14 +259,42 @@ export default function BookingForm() {
                 </div>
             )}
             
-            {tripType === 'recurring' && (
-                 <FormField control={form.control} name="pickupTime" render={({ field }) => (
+            {/* Drop-off time for all trip types */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="dropOffTime" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Requested Pick-up Time for recurring rides<span className="text-red-500">*</span></FormLabel>
+                        <FormLabel>Requested Drop-off Time<span className="text-red-500">*</span></FormLabel>
                         <FormControl><TimePicker field={field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
+                <div></div>
+            </div>
+            
+            {tripType === 'recurring' && (
+                <>
+                    <FormField control={form.control} name="pickupTime" render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Requested Pick-up Time for recurring rides<span className="text-red-500">*</span></FormLabel>
+                            <FormControl><TimePicker field={field} /></FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )} />
+                    
+                    <FormField control={form.control} name="recurringTransportationDetails" render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Recurring Transportation Details<span className="text-red-500">*</span></FormLabel>
+                            <FormControl>
+                                <Textarea 
+                                    className="min-h-[120px]" 
+                                    placeholder="Please enter the specific dates and details for your recurring transportation (e.g., dates: 09/21, 09/28, 10/05, 10/12, etc.)"
+                                    {...field} 
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )} />
+                </>
             )}
 
 
