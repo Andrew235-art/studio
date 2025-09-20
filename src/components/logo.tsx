@@ -5,10 +5,10 @@ export default function Logo({ className }: { className?: string }) {
     return (
         <div className={cn("relative", className)}>
             <Image
-                src="/stamerck-logo-new.png"
+                src="/stamerck-logo-clear.png"
                 alt="Stamerck Enterprise Logo - Safety Rides on Angels Wings"
-                width={384}
-                height={154}
+                width={512}
+                height={200}
                 className="h-auto w-full drop-shadow-md filter"
                 priority
             />
