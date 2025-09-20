@@ -61,7 +61,7 @@ const formSchema = z.object({
   contactName: z.string().min(1, 'Contact name is required.'),
   contactPhone: z.string().min(10, 'A valid phone number is required.'),
   tripType: z.string().min(1, 'Trip type is required.'),
-  pickupDate: z.date({ required_error: "A pick-up date is required." }),
+  pickupDate: z.date({ required_error: "A pick-up date is required." }).optional(),
   pickupTime: z.string().min(1, 'Pick-up time is required.'),
   dropOffTime: z.string().min(1, 'Drop-off time is required.'),
   recurringStartDate: z.date().optional(),
@@ -81,6 +81,15 @@ const formSchema = z.object({
   hasAdditionalDestinations: z.boolean().optional(),
   additionalDestinations: z.array(additionalDestinationSchema).optional(),
   confirmationEmail: z.string().email('A valid email is required.'),
+}).refine(data => {
+    // Pickup date is required for non-recurring trips
+    if (data.tripType !== 'recurring' && !data.pickupDate) {
+        return false;
+    }
+    return true;
+}, {
+    message: 'Pick-up date is required.',
+    path: ['pickupDate'],
 }).refine(data => {
     if (data.tripType === 'recurring' && !data.recurringStartDate) {
         return false;
@@ -105,6 +114,29 @@ const formSchema = z.object({
 }, {
     message: 'Recurring transportation details are required.',
     path: ['recurringTransportationDetails'],
+}).refine(data => {
+    // If additional destinations are enabled, array should not be empty
+    if (data.hasAdditionalDestinations && (!data.additionalDestinations || data.additionalDestinations.length === 0)) {
+        return false;
+    }
+    return true;
+}, {
+    message: 'At least one additional destination is required when additional destinations are enabled.',
+    path: ['additionalDestinations'],
+}).refine(data => {
+    // Validate date ranges for additional destinations
+    if (data.additionalDestinations) {
+        for (let i = 0; i < data.additionalDestinations.length; i++) {
+            const dest = data.additionalDestinations[i];
+            if (dest.startDate && dest.endDate && dest.startDate > dest.endDate) {
+                return false;
+            }
+        }
+    }
+    return true;
+}, {
+    message: 'End date must be after start date for additional destinations.',
+    path: ['additionalDestinations'],
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -152,9 +184,11 @@ export default function BookingForm() {
 
   const addDestination = () => {
     const currentDestinations = form.getValues('additionalDestinations') || [];
+    // Initialize with today's date for proper type safety
+    const today = new Date();
     form.setValue('additionalDestinations', [...currentDestinations, {
-      startDate: undefined as any,
-      endDate: undefined as any,
+      startDate: today,
+      endDate: today,
       address: '',
       city: '',
       zipCode: '',
@@ -178,9 +212,14 @@ export default function BookingForm() {
         },
         body: JSON.stringify({
           ...values,
-          pickupDate: values.pickupDate.toISOString(),
+          pickupDate: values.pickupDate?.toISOString(),
           recurringStartDate: values.recurringStartDate?.toISOString(),
           recurringEndDate: values.recurringEndDate?.toISOString(),
+          additionalDestinations: values.additionalDestinations?.map(dest => ({
+            ...dest,
+            startDate: dest.startDate?.toISOString(),
+            endDate: dest.endDate?.toISOString(),
+          })),
         }),
       });
 
