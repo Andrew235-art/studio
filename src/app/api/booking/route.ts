@@ -8,12 +8,45 @@ const bookingSchema = z.object({
   contactName: z.string().min(1, 'Contact name is required.'),
   contactPhone: z.string().min(10, 'A valid phone number is required.'),
   tripType: z.string().min(1, 'Trip type is required.'),
-  pickupDate: z.string().min(1, 'Pick-up date is required.'),
+  pickupDate: z.string().optional(),
   pickupTime: z.string().min(1, 'Pick-up time is required.'),
   dropOffTime: z.string().min(1, 'Drop-off time is required.'),
   recurringStartDate: z.string().optional(),
   recurringEndDate: z.string().optional(),
   recurringTransportationDetails: z.string().optional(),
+}).refine((data) => {
+  // For recurring trips, require recurring fields
+  if (data.tripType === 'recurring') {
+    return data.recurringStartDate && data.recurringEndDate && data.recurringTransportationDetails;
+  }
+  // For non-recurring trips, require pickup date
+  return data.pickupDate;
+}, {
+  message: "Required fields missing for trip type",
+  path: ["tripType"]
+}).refine((data) => {
+  // Validate recurring date range
+  if (data.tripType === 'recurring' && data.recurringStartDate && data.recurringEndDate) {
+    return new Date(data.recurringEndDate) >= new Date(data.recurringStartDate);
+  }
+  return true;
+}, {
+  message: "End date must be after start date",
+  path: ["recurringEndDate"]
+}).refine((data) => {
+  // Validate additional destinations if present
+  if (data.hasAdditionalDestinations && data.additionalDestinations) {
+    return data.additionalDestinations.length > 0 && data.additionalDestinations.every(dest => 
+      dest.address && dest.city && dest.zipCode && 
+      dest.startDate && dest.endDate &&
+      new Date(dest.endDate) >= new Date(dest.startDate)
+    );
+  }
+  return true;
+}, {
+  message: "Additional destinations must not be empty and must have valid dates and addresses",
+  path: ["additionalDestinations"]
+});
   transportationDetails: z.array(z.string()).optional(),
   notes: z.string().optional(),
   patientName: z.string().min(1, 'Patient name is required.'),
@@ -88,7 +121,7 @@ export async function POST(request: NextRequest) {
     await sendEmail({
       to: formData.confirmationEmail,
       subject: 'Transportation Booking Request Confirmation',
-      text: `Dear ${formData.contactName},\n\nThank you for your transportation booking request with Stamerck Enterprise. We have received your request and will contact you within 2 hours to confirm availability and finalize details.\n\nBooking Details:\nPatient: ${formData.patientName}\nTrip Type: ${formData.tripType}\n${formData.pickupDate ? `Pickup Date: ${new Date(formData.pickupDate).toLocaleDateString()}` : ''}\n${formData.recurringStartDate && formData.recurringEndDate ? `Recurring Period: ${new Date(formData.recurringStartDate).toLocaleDateString()} - ${new Date(formData.recurringEndDate).toLocaleDateString()}` : ''}\nPickup Time: ${formData.pickupTime}\nDrop-off Time: ${formData.dropOffTime}\nPickup Address: ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip}\nDestination: ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}\nTransportation Details: ${transportDetails}\n${formData.recurringTransportationDetails ? `Recurring Details: ${formData.recurringTransportationDetails}` : ''}\n${formData.hasAdditionalDestinations && formData.additionalDestinations ? `\nAdditional Destinations:${formData.additionalDestinations.map((dest, i) => `\n  ${i+1}. ${dest.address}, ${dest.city} ${dest.zipCode} (${new Date(dest.startDate).toLocaleDateString()} - ${new Date(dest.endDate).toLocaleDateString()})${dest.notes ? ` - ${dest.notes}` : ''}`).join('')}` : ''}\n${formData.notes ? `Notes: ${formData.notes}` : ''}\n\nContact Information:\nContact: ${formData.contactName} - ${formData.contactPhone}\nPatient: ${formData.patientName} - ${formData.patientPhone}\nPickup Location: ${formData.pickupPhone}\n\nThank you for choosing Stamerck Enterprise for your transportation needs.\n\nBest regards,\nStamerck Enterprise Team`,
+      text: `Dear ${formData.contactName},\n\nThank you for your transportation booking request with Stamerck Enterprise. We have received your request and will contact you within 2 hours to confirm availability and finalize details.\n\nBooking Details:\nPatient: ${formData.patientName}\nTrip Type: ${formData.tripType}\n${formData.pickupDate ? `Pickup Date: ${new Date(formData.pickupDate).toLocaleDateString()}` : ''}\n${formData.recurringStartDate && formData.recurringEndDate ? `Recurring Period: ${new Date(formData.recurringStartDate).toLocaleDateString()} - ${new Date(formData.recurringEndDate).toLocaleDateString()}` : ''}\nPickup Time: ${formData.pickupTime}\nDrop-off Time: ${formData.dropOffTime}\nPickup Address: ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip}\nDestination: ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}\nTransportation Details: ${transportDetails}\n${formData.recurringTransportationDetails ? `Recurring Details: ${formData.recurringTransportationDetails}` : ''}\n${formData.hasAdditionalDestinations && formData.additionalDestinations ? `\nAdditional Destinations:${formData.additionalDestinations.map((dest, i) => `\n  ${i+1}. ${dest.address}, ${dest.city} ${dest.zipCode} (${new Date(dest.startDate).toLocaleDateString()} - ${new Date(dest.endDate).toLocaleDateString()})${dest.notes ? ` - ${dest.notes}` : ''}`).join('')}` : ''}\n${formData.notes ? `Notes: ${formData.notes}` : ''}\n\nContact Information:\nContact: ${formData.contactName} - ${formData.contactPhone}\nPatient: ${formData.patientName} - ${formData.patientPhone}\nPickup Phone: ${formData.pickupPhone}\n\nThank you for choosing Stamerck Enterprise for your transportation needs.\n\nBest regards,\nStamerck Enterprise Team`,
       html: `
         <h2>Transportation Booking Request Confirmation</h2>
         <p>Dear ${formData.contactName},</p>
@@ -114,7 +147,7 @@ export async function POST(request: NextRequest) {
         <ul>
           <li><strong>Contact:</strong> ${formData.contactName} - ${formData.contactPhone}</li>
           <li><strong>Patient:</strong> ${formData.patientName} - ${formData.patientPhone}</li>
-          <li><strong>Pickup Location:</strong> ${formData.pickupPhone}</li>
+          <li><strong>Pickup Phone:</strong> ${formData.pickupPhone}</li>
         </ul>
         
         <p>Thank you for choosing Stamerck Enterprise for your transportation needs.</p>
@@ -126,7 +159,7 @@ export async function POST(request: NextRequest) {
     await sendEmail({
       to: 'bookings@stamerck.com',
       subject: 'New Transportation Booking Request',
-      text: `New transportation booking request received:\n\nContact: ${formData.contactName} (${formData.contactPhone})\nPatient: ${formData.patientName} (${formData.patientPhone})\nTrip Type: ${formData.tripType}\nPickup: ${new Date(formData.pickupDate).toLocaleDateString()} at ${formData.pickupTime}\nFrom: ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip} (${formData.pickupPhone})\nTo: ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}\nTransportation: ${transportDetails}\nEmail: ${formData.confirmationEmail}\n${formData.notes ? `Notes: ${formData.notes}` : ''}\n${formData.tripType === 'recurring' ? `Recurring: ${formData.recurringStartDate ? new Date(formData.recurringStartDate).toLocaleDateString() : ''} to ${formData.recurringEndDate ? new Date(formData.recurringEndDate).toLocaleDateString() : ''}` : ''}\n\nSubmitted at: ${new Date().toLocaleString()}\n\nPlease contact the customer within 2 hours to confirm.`,
+      text: `New transportation booking request received:\n\nContact: ${formData.contactName} (${formData.contactPhone})\nPatient: ${formData.patientName} (${formData.patientPhone})\nTrip Type: ${formData.tripType}\nPickup: ${new Date(pickupDate).toLocaleDateString()} at ${formData.pickupTime}\nFrom: ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip} (${formData.pickupPhone})\nTo: ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}\nTransportation: ${transportDetails}\nEmail: ${formData.confirmationEmail}\n${formData.notes ? `Notes: ${formData.notes}` : ''}\n${formData.tripType === 'recurring' ? `Recurring: ${formData.recurringStartDate ? new Date(formData.recurringStartDate).toLocaleDateString() : ''} to ${formData.recurringEndDate ? new Date(formData.recurringEndDate).toLocaleDateString() : ''}` : ''}\n\nSubmitted at: ${new Date().toLocaleString()}\n\nPlease contact the customer within 2 hours to confirm.`,
       html: `
         <h2>New Transportation Booking Request</h2>
         <h3>Contact Information:</h3>
@@ -136,7 +169,7 @@ export async function POST(request: NextRequest) {
         
         <h3>Trip Details:</h3>
         <p><strong>Trip Type:</strong> ${formData.tripType}</p>
-        <p><strong>Pickup:</strong> ${new Date(formData.pickupDate).toLocaleDateString()} at ${formData.pickupTime}</p>
+        <p><strong>Pickup:</strong> ${new Date(pickupDate).toLocaleDateString()} at ${formData.pickupTime}</p>
         <p><strong>From:</strong> ${formData.pickupAddress}, ${formData.pickupCity} ${formData.pickupZip} (${formData.pickupPhone})</p>
         <p><strong>To:</strong> ${formData.destinationAddress}, ${formData.destinationCity} ${formData.destinationZip}</p>
         <p><strong>Transportation:</strong> ${transportDetails}</p>
