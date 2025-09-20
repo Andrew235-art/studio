@@ -177,14 +177,14 @@ export default function BookingForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="contactName" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Contact Name*</FormLabel>
+                        <FormLabel>Contact Name<span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
                 <FormField control={form.control} name="contactPhone" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Contact Phone</FormLabel>
+                        <FormLabel>Contact Phone<span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input type="tel" {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
@@ -193,7 +193,7 @@ export default function BookingForm() {
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="tripType" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Trip Type*</FormLabel>
+                        <FormLabel>Trip Type<span className="text-red-500">*</span></FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                                 <SelectTrigger><SelectValue placeholder="Select Trip Type" /></SelectTrigger>
@@ -215,14 +215,14 @@ export default function BookingForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
                      <FormField control={form.control} name="recurringStartDate" render={({ field }) => (
                         <FormItem className="flex flex-col">
-                            <FormLabel>Recurring Start Date*</FormLabel>
+                            <FormLabel>Recurring Start Date<span className="text-red-500">*</span></FormLabel>
                             <DatePicker field={field} />
                             <FormMessage />
                         </FormItem>
                     )} />
                      <FormField control={form.control} name="recurringEndDate" render={({ field }) => (
                         <FormItem className="flex flex-col">
-                            <FormLabel>Recurring End Date*</FormLabel>
+                            <FormLabel>Recurring End Date<span className="text-red-500">*</span></FormLabel>
                             <DatePicker field={field} />
                             <FormMessage />
                         </FormItem>
@@ -232,14 +232,14 @@ export default function BookingForm() {
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
                     <FormField control={form.control} name="pickupDate" render={({ field }) => (
                         <FormItem className="flex flex-col">
-                            <FormLabel>Requested Pick-up Date*</FormLabel>
+                            <FormLabel>Requested Pick-up Date<span className="text-red-500">*</span></FormLabel>
                             <DatePicker field={field} />
                             <FormMessage />
                         </FormItem>
                     )} />
                     <FormField control={form.control} name="pickupTime" render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Requested Pick-up Time*</FormLabel>
+                            <FormLabel>Requested Pick-up Time<span className="text-red-500">*</span></FormLabel>
                             <FormControl><TimePicker field={field} /></FormControl>
                             <FormMessage />
                         </FormItem>
@@ -250,7 +250,7 @@ export default function BookingForm() {
             {tripType === 'recurring' && (
                  <FormField control={form.control} name="pickupTime" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Requested Pick-up Time for recurring rides*</FormLabel>
+                        <FormLabel>Requested Pick-up Time for recurring rides<span className="text-red-500">*</span></FormLabel>
                         <FormControl><TimePicker field={field} /></FormControl>
                         <FormMessage />
                     </FormItem>
@@ -315,14 +315,14 @@ export default function BookingForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="patientName" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Patient Name*</FormLabel>
+                        <FormLabel>Patient Name<span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
                 <FormField control={form.control} name="patientPhone" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Patient Phone #*</FormLabel>
+                        <FormLabel>Patient Phone #<span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input type="tel" {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
@@ -332,7 +332,7 @@ export default function BookingForm() {
             <FormSectionTitle>PICK UP ADDRESS</FormSectionTitle>
             <FormField control={form.control} name="pickupAddress" render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Address*</FormLabel>
+                    <FormLabel>Address<span className="text-red-500">*</span></FormLabel>
                     <FormControl><Input {...field} /></FormControl>
                     <FormMessage />
                 </FormItem>
@@ -340,14 +340,14 @@ export default function BookingForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="pickupCity" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>City*</FormLabel>
+                        <FormLabel>City<span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
                 <FormField control={form.control} name="pickupZip" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Zip Code*</FormLabel>
+                        <FormLabel>Zip Code<span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
@@ -355,7 +355,7 @@ export default function BookingForm() {
             </div>
              <FormField control={form.control} name="pickupPhone" render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Phone #*</FormLabel>
+                    <FormLabel>Phone #<span className="text-red-500">*</span></FormLabel>
                     <FormControl><Input type="tel" {...field} /></FormControl>
                     <FormMessage />
                 </FormItem>
@@ -364,7 +364,7 @@ export default function BookingForm() {
             <FormSectionTitle>DESTINATION ADDRESS</FormSectionTitle>
             <FormField control={form.control} name="destinationAddress" render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Address*</FormLabel>
+                    <FormLabel>Address<span className="text-red-500">*</span></FormLabel>
                     <FormControl><Input {...field} /></FormControl>
                     <FormMessage />
                 </FormItem>
@@ -372,14 +372,14 @@ export default function BookingForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="destinationCity" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>City*</FormLabel>
+                        <FormLabel>City<span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
                 <FormField control={form.control} name="destinationZip" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Zip Code*</FormLabel>
+                        <FormLabel>Zip Code<span className="text-red-500">*</span></FormLabel>
                         <FormControl><Input {...field} /></FormControl>
                         <FormMessage />
                     </FormItem>
@@ -388,7 +388,7 @@ export default function BookingForm() {
 
             <FormField control={form.control} name="confirmationEmail" render={({ field }) => (
               <FormItem>
-                  <FormLabel>Confirmation Email Address</FormLabel>
+                  <FormLabel>Confirmation Email Address<span className="text-red-500">*</span></FormLabel>
                   <FormControl><Input type="email" {...field} /></FormControl>
                   <FormMessage />
               </FormItem>
