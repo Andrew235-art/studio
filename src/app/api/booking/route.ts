@@ -14,6 +14,27 @@ const bookingSchema = z.object({
   recurringStartDate: z.string().optional(),
   recurringEndDate: z.string().optional(),
   recurringTransportationDetails: z.string().optional(),
+  transportationDetails: z.array(z.string()).optional(),
+  notes: z.string().optional(),
+  patientName: z.string().min(1, 'Patient name is required.'),
+  patientPhone: z.string().min(10, 'A valid patient phone number is required.'),
+  pickupAddress: z.string().min(1, 'Pickup address is required.'),
+  pickupCity: z.string().min(1, 'Pickup city is required.'),
+  pickupZip: z.string().min(5, 'A valid zip code is required.'),
+  pickupPhone: z.string().min(10, 'A valid phone number is required.'),
+  destinationAddress: z.string().min(1, 'Destination address is required.'),
+  destinationCity: z.string().min(1, 'Destination city is required.'),
+  destinationZip: z.string().min(5, 'A valid zip code is required.'),
+  hasAdditionalDestinations: z.boolean().optional(),
+  additionalDestinations: z.array(z.object({
+    startDate: z.string(),
+    endDate: z.string(),
+    address: z.string().min(1, 'Address is required.'),
+    city: z.string().min(1, 'City is required.'),
+    zipCode: z.string().min(5, 'A valid zip code is required.'),
+    notes: z.string().optional(),
+  })).optional(),
+  confirmationEmail: z.string().email('A valid email is required.'),
 }).refine((data) => {
   // For recurring trips, require recurring fields
   if (data.tripType === 'recurring') {
@@ -46,28 +67,6 @@ const bookingSchema = z.object({
 }, {
   message: "Additional destinations must not be empty and must have valid dates and addresses",
   path: ["additionalDestinations"]
-});
-  transportationDetails: z.array(z.string()).optional(),
-  notes: z.string().optional(),
-  patientName: z.string().min(1, 'Patient name is required.'),
-  patientPhone: z.string().min(10, 'A valid patient phone number is required.'),
-  pickupAddress: z.string().min(1, 'Pickup address is required.'),
-  pickupCity: z.string().min(1, 'Pickup city is required.'),
-  pickupZip: z.string().min(5, 'A valid zip code is required.'),
-  pickupPhone: z.string().min(10, 'A valid phone number is required.'),
-  destinationAddress: z.string().min(1, 'Destination address is required.'),
-  destinationCity: z.string().min(1, 'Destination city is required.'),
-  destinationZip: z.string().min(5, 'A valid zip code is required.'),
-  hasAdditionalDestinations: z.boolean().optional(),
-  additionalDestinations: z.array(z.object({
-    startDate: z.string(),
-    endDate: z.string(),
-    address: z.string().min(1, 'Address is required.'),
-    city: z.string().min(1, 'City is required.'),
-    zipCode: z.string().min(5, 'A valid zip code is required.'),
-    notes: z.string().optional(),
-  })).optional(),
-  confirmationEmail: z.string().email('A valid email is required.'),
 });
 
 export async function POST(request: NextRequest) {
