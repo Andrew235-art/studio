@@ -1,9 +1,6 @@
 
-'use client';
-
 import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { useState, useEffect } from 'react';
 import Logo from '../logo';
 
 const footerLinks = [
@@ -18,11 +15,6 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState<number | null>(null);
-
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
 
   return (
     <footer className="bg-primary text-primary-foreground border-t">
@@ -79,7 +71,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/80">
-           <p suppressHydrationWarning>&copy; {currentYear || new Date().getFullYear()} Stamerck Enterprise. All rights reserved.</p>
+           <p>&copy; {new Date().getFullYear()} Stamerck Enterprise. All rights reserved.</p>
         </div>
       </div>
     </footer>
