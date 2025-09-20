@@ -56,6 +56,10 @@ export default function Footer() {
                 <a href="tel:+1-617-991-0839" className="text-primary-foreground/80 hover:text-primary-foreground">+1 617 991 0839</a>
               </li>
               <li className="flex items-start gap-3">
+                <Phone className="h-5 w-5 mt-0.5 text-primary-foreground flex-shrink-0" />
+                <a href="tel:+1-800-756-2706" className="text-primary-foreground/80 hover:text-primary-foreground">+1 (800) 756-2706</a>
+              </li>
+              <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 mt-0.5 text-primary-foreground flex-shrink-0" />
                 <a href="mailto:bookings@stamerck.com" className="text-primary-foreground/80 hover:text-primary-foreground">bookings@stamerck.com</a>
               </li>

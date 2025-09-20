@@ -26,7 +26,10 @@ export default function ContactPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">For bookings and inquiries:</p>
-              <a href="tel:+1-617-991-0839" className="text-lg font-semibold text-primary hover:underline">+1 617 991 0839</a>
+              <div className="space-y-1">
+                <a href="tel:+1-617-991-0839" className="text-lg font-semibold text-primary hover:underline block">+1 617 991 0839</a>
+                <a href="tel:+1-800-756-2706" className="text-lg font-semibold text-primary hover:underline block">+1 (800) 756-2706</a>
+              </div>
             </CardContent>
           </Card>
            <Card className="shadow-lg hover:shadow-xl transition-shadow">
